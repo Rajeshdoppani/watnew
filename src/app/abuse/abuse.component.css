@@ -1,0 +1,73 @@
+.enquiry-form-sec {
+    text-align: center;
+    padding: 1em 0 4em;
+}
+
+.enquiry-form-sec h2 {
+    font-size: 25px;
+    margin: 0 0 15px 0;
+    line-height: 25px;
+    color: #537eff;
+}
+
+.enquiry-form-sec p {
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0 0 25px 0;
+}
+
+.enquiry-form-sec .form-control {
+    width: 50%;
+    float: none;
+    padding: 10px;
+    height: auto;
+    margin: 0 auto 40px;
+    font-size: 16px;
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.2);
+    -webkit-transition: -webkit-box-shadow 83ms;
+    transition: -webkit-box-shadow 83ms;
+    transition: box-shadow 83ms;
+    transition: box-shadow 83ms, -webkit-box-shadow 83ms;
+    border: none; resize: none;
+}
+
+.report-but {
+    border: none;
+    background-position: bottom;
+    background: linear-gradient(to bottom, #00356f 50%, #fff 50%) no-repeat scroll bottom right / 100% 212% #00356f;
+    transition: all 200ms ease;
+    margin: 0 15px;
+    padding: 0.7em 2.5em;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-radius: 30px;
+    color: #00356f;
+    border: 1px solid #00356f;
+}
+
+.report-but:hover, .report-but.active {
+    background-position: top;
+    color: #ffffff;
+}
+
+.block-but {
+    border: none;
+    background-position: bottom;
+    background: linear-gradient(to bottom, #ff0a00 50%, #fff 50%) no-repeat scroll bottom right / 100% 212% #ff0a00;
+    transition: all 200ms ease;
+    margin: 0 15px;
+    padding: 0.7em 2.5em;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-radius: 30px;
+    color: #ff0a00;
+    border: 1px solid #ff0a00;
+}
+
+.block-but:hover, .block-but.active {
+    background-position: top;
+    color: #ffffff;
+}

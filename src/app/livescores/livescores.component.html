@@ -1,0 +1,303 @@
+<navbar></navbar>
+<div class="main-content-w pagesaContent livescores-pg">
+  <div class="main-content-m">
+    <div class="main-content-i">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-9 col-md-9 wt-left">
+            <div class="top-sidebar-wrapper">
+              <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigs">
+                <aside ngxSlickItem id="media_image-4"
+                  class="widget-odd widget-last widget-first widget-1 widget widget_media_image"
+                  *ngFor="let bannerdata of Bannerdata"><a href="{{bannerdata.url}}"><img width="898" height="117"
+                      src="{{bannerdata.bannerimages[0].path}}" class="image wp-image-1831  attachment-full size-full"
+                      alt="" style="max-width: 100%; height: auto;"></a></aside>
+              </ngx-slick-carousel>
+            </div>
+            <header class="search-results-header">
+
+              <h3>Live <button class="change_state" (click)="changeState()">Change States</button></h3>
+
+            </header>
+            <div class="content side-padded-content">
+
+              <div id="primary-content" data-page-id="407" class="index-isotope hidden-on-load v3  "
+                data-layout-mode="masonry">
+                <div class="hcontent" *ngFor="let live of finalarray; let i = index;">
+                  <article *ngIf="live.liveadvalue == 0" id="post-161"
+                    class="manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+                    <div class="col-xs-12 col-sm-2 col-md-2 page-icon-left">
+                      <a class="twPc-avatarLink" *ngIf="live.page != null">
+                        <img [src]="live.page.page_icon" onError="this.src='assets/images/noimage.jpg'"
+                          class="twPc-avatarImg">
+                        <!-- <img alt="{{post.page.name}}" src="assets/images/tfn.png" class="twPc-avatarImg"> -->
+                      </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-10 pb-right">
+                      <div class="post-body">
+                        <div class="post-top-share">
+                          <i class="fa os-icon-plus share-activator-icon share-activator"></i>
+                          <span class="share-activator-label share-activator caption">Share</span>
+                          <div class="os_social-head-w">
+                            <div class="os_social"><a class="os_social_twitter_share"
+                                href="https://twitter.com/share?url={{baseURL}}/share/{{live.id}}" target="_blank"><img
+                                  src="assets/images/socialicons/twitter.png" title="Twitter" class="os_social"
+                                  alt="Tweet about this on Twitter"></a>
+                              <a class="os_social_google_share"
+                                href="https://plus.google.com/share?url={{baseURL}}/share/{{live.id}}"
+                                target="_blank"><img src="assets/images/socialicons/google.png" title="Google+"
+                                  class="os_social" alt="Share on Google+"></a>
+                              <a class="os_social_email_share"
+                                href="mailto:?Subject=Post URL&amp;Body={{baseURL}}/share/{{live.id}}"><img
+                                  src="assets/images/socialicons/email.png" title="Email" class="os_social"
+                                  alt="Email this to someone"></a>
+                              <a class="os_social_facebook_share"
+                                href="https://www.facebook.com/sharer.php?u={{baseURL}}/share/{{live.id}}"
+                                target="_blank"><img src="assets/images/socialicons/facebook.png" title="Facebook"
+                                  class="os_social" alt="Share on Facebook"></a>
+                              <a class="os_social_facebook_share"
+                                href="https://wa.me/?text={{baseURL}}/share/{{live.id}}" target="_blank"><img
+                                  src="assets/images/socialicons/whatsapp.png" title="Whatsapp" class="os_social"
+                                  alt="Share on Whatsapp"></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="post-media-body">
+                          <div class="figure-link-w">
+                            <a class="figure-link" style="cursor:pointer;" (click)="loadPost(live.id,i)">
+                              <figure class="abs-image">
+                                <img *ngIf="live.images.length != 0"
+                                  class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                  onError="this.src='assets/images/noimage.jpg'" [src]="live.images[0].path">
+                                <img *ngIf="live.yvideos.length != 0 && live.images.length == 0"
+                                  class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                  onError="this.src='assets/images/noimage.jpg'" [src]="live.yvideos[0].path">
+                                <div class="figure-shade"></div>
+                                <i *ngIf="live.yvideos.length == '0'"
+                                  class="figure-icon  os-new-icon os-new-icon-eye"></i>
+                                <i *ngIf="live.yvideos.length != '0'"
+                                  class="figure-icon  os-new-icon os-new-icon-video Video_post"></i>
+                              </figure>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-content-body">
+                          <div class="page-title">
+
+                            <h2 *ngIf="live.page != null">
+                              <div class="meta-date">Posted on
+                                <i class="os-new-icon os-new-icon-clock"></i>
+                                <time class="entry-date updated">{{live.created_at}}
+                                  |</time>
+                              </div><a>
+                                by {{live.page.name}}</a>
+                              <span class="views-icon" *ngIf="live.liveviews_count != 0">
+                                Views :
+                                <span>{{live.liveviews_count}}</span>
+                              </span>
+                            </h2>
+                          </div>
+                          <h4 class="post-title entry-title" *ngIf="live.title != null"><a style="cursor:pointer;"
+                              (click)="loadPost(live.id,i)">
+                              {{live.title}}...</a></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article *ngIf="live.liveadvalue == 1" id="post-161"
+                    class="manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+                    <div class="col-xs-12 col-sm-2 col-md-2 page-icon-left">
+                      <!-- <a class="twPc-avatarLink" *ngIf="live.page != null">
+                      <img [src]="live.page.page_icon" onError="this.src='assets/images/noimage.jpg'"
+                        class="twPc-avatarImg">
+                    </a> -->
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-10 pb-right">
+                      <div class="post-body">
+                        <div class="post-media-body">
+                          <div class="figure-link-w">
+                            <span class="slick-counter" *ngIf="live.SlickCounter">{{live.SlickCounter}}</span>
+                            <ngx-slick-carousel #slickModal="slick-carousel" [config]="adsConfig"
+                              (afterChange)="afterChange($event, i)">
+                              <ng-container>
+                                <figure class="abs-image" *ngFor="let ads of live.addsimages">
+                                  <a target="_blank" href="{{live.url}}">
+                                    <img ngxSlickItem
+                                      class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                      onError="this.src='assets/images/noimage.jpg'" [src]="ads.path">
+                                  </a>
+                                </figure>
+                              </ng-container>
+                            </ngx-slick-carousel>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="loadMore" style="display:none;">
+                <button (click)="fetchNextLive()" class="load_more">Load More</button>
+              </div>
+              <p *ngIf="loadMessage" style="font-size: 18px;text-align: center;color: #fff;">{{loadMessage}}</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+            <rightsidebar></rightsidebar>
+          </div>
+        </div>
+
+      </div><!-- Container End-->
+    </div>
+  </div>
+  <footer></footer>
+</div>
+<div class="row otp-sec new-popup livepopup" #selectstates (click)="modal.open()">
+  <modal #modal>
+    <modal-header>
+      <h1>Select States</h1>
+    </modal-header>
+    <modal-content>
+      <div class="form-group">
+        <!-- <select id="dates-field2" class="multiselect-ui form-control" name="statesval"
+          [(ngModel)]="selectinfo.statesval" #statesval="ngModel" multiple="multiple">
+          <option *ngFor="let slist of stateslist" value="{{slist.id}}">{{slist.name}}</option>
+        </select> -->
+
+        <ul class="right-follow-sec">
+          <li *ngFor="let slist of stateslist">
+            <p> <input class="form-check-input" name="{{slist.id}}" type="checkbox" id="{{slist.id}}"
+                [checked]="slist.id == slist.stateselect" (change)="onChangeState(slist, $event)"></p>
+            <h3>{{slist.name}}</h3>
+
+          </li>
+        </ul>
+
+      </div>
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" [disabled]="checkstate == 'false'"
+        (click)="modal.close();fetchcontent()">Continue</button>
+    </modal-footer>
+  </modal>
+</div>
+
+
+<div class="row post-det-popup" #Live_post (click)="modalopen.open()">
+  <modal #modalopen>
+    <modal-content>
+      <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7">
+          <article id="post-161"
+            class="pluto-page-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+            <div class="post-body p-bot-10">
+              <div class="single-post-top-features">
+                <div class="single-post-top-share">
+                  <i class="os-new-icon os-new-icon-share-2 share-activator-icon share-activator"></i>
+                  <span class="share-activator-label share-activator caption">Share</span>
+                  <div class="os_social-head-w">
+                    <div class="os_social"><a class="os_social_twitter_share"
+                        href="https://twitter.com/share?url={{baseURL}}/share/{{liveID}}" target="_blank"><img
+                          src="assets/images/socialicons/twitter.png" title="Twitter" class="os_social"
+                          alt="Tweet about this on Twitter"></a><a class="os_social_google_share"
+                        href="https://plus.google.com/share?url={{baseURL}}/share/{{liveID}}" target="_blank"><img
+                          src="assets/images/socialicons/google.png" title="Google+" class="os_social"
+                          alt="Share on Google+"></a>
+                      <a class="os_social_email_share"
+                        href="mailto:?Subject=Post URL&amp;Body={{baseURL}}/share/{{liveID}}"><img
+                          src="assets/images/socialicons/email.png" title="Email" class="os_social"
+                          alt="Email this to someone"></a>
+                      <a class="os_social_facebook_share"
+                        href="http://www.facebook.com/sharer.php?u={{baseURL}}/share/{{liveID}}" target="_blank"><img
+                          src="assets/images/socialicons/facebook.png" title="Facebook" class="os_social"
+                          alt="Share on Facebook"></a>
+                      <a class="os_social_whatsapp_share" href="https://wa.me/?text={{baseURL}}/share/{{liveID}}"
+                        target="_blank"><img src="assets/images/socialicons/whatsapp.png" title="Whatsapp"
+                          class="os_social" alt="Share on Whatsapp"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="post-media-body m-b-none">
+                <div class="figure-link-w">
+                  <figure *ngIf="livedetails_yvideos" class="abs-image ytube" [innerHtml]="livedetails_yvideos">
+                  </figure>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5">
+          <div class="sidebar-under-post">
+            <div class="">
+              <div class="page-title">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-3 col-md-2">
+                    <a class="twPc-avatarLink">
+                      <img onError="this.src='assets/images/noimage.jpg'" [src]="page_icon" class="twPc-avatarImg">
+                      <!-- <img alt="{{post.page.name}}" src="assets/images/tfn.png" class="twPc-avatarImg"> -->
+                    </a>
+                  </div>
+                  <div class="col-xs-12 col-sm-9 col-md-10">
+                    <div class="post-meta-top entry-meta">
+                      <div class="ppd">
+                        <div class="post-date">Posted on <time class="entry-date updated"
+                            datetime="2014-05-05T21:26:35+00:00"><b>{{liveCreated}}</b></time>
+                        </div>
+                        <div class="post-author">by
+                          <strong class="author vcard"><a>{{pagename}}</a></strong>
+                        </div>
+                        <div class="p-d-views">
+                          <span class="views-icon" *ngIf="views_count != 0">
+                            Views :
+                            <span>{{views_count}}</span>
+                          </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h1 class="post-title entry-title post-det-tit" [innerHtml]="liveTitle"></h1>
+              <div class="post-content entry-content">
+                <p [innerHtml]="liveDesc"></p>
+              </div>
+              <div class="widget">
+                <h4 class="widget-title">Chat</h4>
+                <div class="comments-sec">
+                  <div class="commentScroll">
+                    <div class="comment_list" *ngFor="let chatdata of livechatData; let i = index;">
+                      <p>
+                        <img alt="" class="comment-icon" *ngIf="chatdata.user_profile_pic != null"
+                          onError="this.src='assets/images/noimage.jpg'"
+                          [src]="chatdata.user_profile_pic.fullpathimage">
+                        <img alt="" class="comment-icon" *ngIf="chatdata.user_profile_pic == null"
+                          src="assets/icon/none.png">
+                        <span class="comment-area">
+                          <span class="nickname"
+                            *ngIf="chatdata.user_details != null">{{chatdata.user_details.nick_name}}</span>
+                          <span class="nickname" *ngIf="chatdata.user_details == null">{{chatdata.nick_name}}</span>
+                          {{chatdata.text}}
+                        </span></p>
+                    </div>
+                  </div>
+                  <div>
+                    <form action="" method="post" name="commentForm" #commentForm="ngForm" novalidate>
+                      <textarea type="text" name="chat" [(ngModel)]="chatInfo.chat" #chat="ngModel"
+                        (keydown)="AddChat($event)" placeholder="Say something....."></textarea>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" (click)="modalopen.close()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </modal-content>
+  </modal>
+</div>

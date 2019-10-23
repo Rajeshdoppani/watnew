@@ -1,0 +1,66 @@
+<navbar></navbar>
+<div class="main-content-w">
+  <div class="main-content-m">
+    <div class="main-content-i">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-9 col-md-9 wt-left" id="container">
+
+            <div class="content reading-mode-content side-padded-content">
+              <div class="top-sidebar-wrapper">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigs">
+                  <aside ngxSlickItem id="media_image-4"
+                    class="widget-odd widget-last widget-first widget-1 widget widget_media_image"
+                    *ngFor="let bannerdata of Bannerdata"><a href="{{bannerdata.url}}"><img width="898" height="117"
+                        src="{{bannerdata.bannerimages[0].path}}" class="image wp-image-1831  attachment-full size-full"
+                        alt="" style="max-width: 100%; height: auto;"></a></aside>
+                </ngx-slick-carousel>
+              </div>
+              <article id="page-74" class="pluto-page-box post-74 page type-page status-publish hentry">
+                <div class="post-body">
+                  <h1 class="page-title">Enquiry</h1>
+                  <div class="post-content enquiry-form-sec">
+                    <svg class="checkmark" id="showmessage" style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle>
+                      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+                    </svg>
+                    <p style="display:none;color: black;text-align: center;">{{message}}</p>
+                    <form action="" method="post" name="enquiryForm" #enquiryForm="ngForm" novalidate>
+                      <div class="form-group">
+                        <label>
+                          <span class="userpro-field-icon"><i class="userpro-icon-user"></i></span> Username</label>
+                        <input type="name" name="name" #name="ngModel" [(ngModel)]="enquiryInfo.name"
+                          class="form-control" placeholder="Username" required>
+                      </div>
+                      <div class="form-group email-sec">
+                        <label><span class="userpro-field-icon"><i class="userpro-icon-envelope-alt"></i></span>
+                          E-mail</label>
+                        <input type="email" name="email" #email="ngModel" [(ngModel)]="enquiryInfo.email"
+                          class="form-control" placeholder="E-mail" required>
+                      </div>
+                      <div class="form-group phone-sec">
+                        <label><span class="userpro-field-icon"><i class="userpro-icon-mobile-phone"></i></span>
+                          Phone</label>
+                        <input type="mobile" name="mobile" #mobile="ngModel" [(ngModel)]="enquiryInfo.mobile"
+                          class="form-control" placeholder="Phone" required>
+                      </div>
+                      <div class="form-group comment-sec">
+                        <label><span class="userpro-field-icon"><i class="userpro-icon-comment"></i></span>
+                          Message</label>
+                        <textarea class="form-control" rows="3" name="message" [(ngModel)]="enquiryInfo.message"
+                          #message="ngModel" placeholder="Enter your message for us here." required></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-default submit-but" [disabled]="!enquiryForm.valid || disableclick == 'true'"
+                        (click)="SendEnquiry(enquiryInfo)">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+            <rightsidebar></rightsidebar>
+          </div>
+        </div>
+        <footer></footer>
+      </div>

@@ -1,0 +1,34 @@
+.more {
+    background: #0074ff;
+    width: 100px;
+    height: 100px;
+    float: right;
+    bottom: 110px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    margin: 10px 0 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.morehide {
+    display: none !important;
+}
+
+.ss {
+    display: block !important;
+}
+
+.moreshow {
+    display: none !important;
+}
+
+.block-vignette {
+    background: radial-gradient(ellipse at center, transparent 0, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.onboarding-tile--small .tile-inner .check-mark {
+    margin-top: 0px;
+}

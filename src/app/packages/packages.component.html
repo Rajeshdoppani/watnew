@@ -1,0 +1,130 @@
+<navbar></navbar>
+<div class="main-content-w">
+    <div class="main-content-m">
+        <div class="main-content-i">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="content">
+                            <div class="demo2">
+                                <header class="search-results-header">
+                                    <h3>Packages</h3>
+                                </header>
+                                <div class="row">
+                                    <ng-container *ngFor="let package of packagesList; let i = index;">
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="pricingTable2">
+                                                <div class="pricingTable-header">
+                                                    <h3 class="title">{{package.subscription_type}}</h3>
+                                                    <div class="price-value">₹{{package.amount}}</div>
+                                                </div>
+                                                <ul class="pricing-content">
+                                                    <li><i class="fa fa-check"></i> {{package.duration}}</li>
+                                                    <li><i class="fa fa-check"></i> {{package.description}}</li>
+                                                </ul>
+                                                <a style="cursor: pointer;" (click)="subscribe(package)"
+                                                    class="pricingTable-signup">Subscribe
+                                                    Now</a>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+</div>
+<div class="row otp-sec user-updated" #alert (click)="modalopen.open()">
+    <modal #modalopen class="modal-sm">
+        <modal-content>
+            <h2>{{message}}</h2>
+        </modal-content>
+    </modal>
+</div>
+
+<div class="row otp-sec user-updated" #myDiv (click)="modalopens.open()">
+        <modal #modalopens class="modal-sm">
+          <modal-header>
+            <h1></h1>
+          </modal-header>
+          <modal-content>
+            
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path></svg>
+            
+            <h2>{{message}}</h2>
+      
+          </modal-content>
+      
+        </modal>
+      </div>
+
+<div class="row otp-sec subscription-from loginpopup" id="form_close" #subscribeForm (click)="modalopened.open()">
+    <modal #modalopened class="modal-sm">
+       
+        <modal-content>
+                <div class="wrap-login100">
+                        <div id="container_demo">
+                            <div id="wrapper">
+            <form class="login100-form validate-form" action="" method="post" name="subscribeForm" #subscribeForm="ngForm" novalidate>
+                    
+                    <span class="login100-form-title p-b-34 p-t-27">
+                            Subscription From
+                        </span>
+               <select class="form-control select-package" name="package_id" #package_id="ngModel"
+                    [(ngModel)]="subscription.package_id" required>
+                    <option [ngValue]="">Select a Package</option>
+                    <option [ngValue]="package.id" *ngFor="let package of packagesList">
+                        {{package.subscription_type}}</option>
+                </select> 
+                <div class="wrap-input100 validate-input" data-validate="Enter Name">
+                    <input type="text" class="form-control input100" name="name" #name="ngModel" [(ngModel)]="subscription.name"
+                    placeholder="Name" required>
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter Email">
+                        <input type="text" class="form-control input100" name="email"
+                    pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email="ngModel"
+                    [(ngModel)]="subscription.email" placeholder="Email Address" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter Mobile">
+                        <input type="text" class="form-control input100" name="mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$" maxlength="10"
+                    #mobile="ngModel" [(ngModel)]="subscription.mobile" placeholder="Mobile Number" required>
+                        <span class="focus-input100" data-placeholder="&#xF188;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter Company Name">
+                        <input type="text" class="form-control input100" name="company_name" #company_name="ngModel"
+                    [(ngModel)]="subscription.company_name" placeholder="Company Name" required>
+                        <span class="focus-input100" data-placeholder="&#xF106;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter Company Url">
+                        <input type="text" class="form-control input100" name="company_url" #company_url="ngModel"
+                        [(ngModel)]="subscription.company_url" placeholder="Company URL" required>
+                        <span class="focus-input100" data-placeholder="&#xf10C;"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                        <input class="login100-form-btn" type="submit" [disabled]="!subscribeForm.valid"
+                        (click)="AddSubscription(subscription)" value="Request" />
+                    </div>
+                <!-- <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="subscription.name"
+                    placeholder="Name" required> -->
+                <!-- <input type="text" class="form-control" name="email"
+                    pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email="ngModel"
+                    [(ngModel)]="subscription.email" placeholder="Email Address" required> -->
+                <!-- <input type="text" class="form-control" name="mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$" maxlength="10"
+                    #mobile="ngModel" [(ngModel)]="subscription.mobile" placeholder="Mobile Number" required> -->
+                <!-- <input type="text" class="form-control" name="company_name" #company_name="ngModel"
+                    [(ngModel)]="subscription.company_name" placeholder="Company Name" required> -->
+                <!-- <input type="text" class="form-control" name="company_url" #company_url="ngModel"
+                    [(ngModel)]="subscription.company_url" placeholder="Company URL" required> -->
+                <!-- <button type="submit" class="btn btn-default report-but" [disabled]="!subscribeForm.valid"
+                    (click)="AddSubscription(subscription)">Request</button> -->
+            </form>
+            </div></div></div>
+        </modal-content>
+    </modal>
+</div>

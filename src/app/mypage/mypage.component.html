@@ -1,0 +1,1874 @@
+<navbar></navbar>
+<div class="main-content-w">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-9 col-md-9 wt-left" id="container">
+				<div class="main-content-m">
+					<div class="main-content-i">
+						<div class="mypage-top-sec">
+							<div class="cover-post"
+								[ngStyle]="{ 'background-image': 'url(' + pageDate.page_header + ')'}">
+								<div class="btn-group" id="btnpage">
+									<!-- <button type="button" class="btn btn-blue btn-spacer" data-toggle="modal"
+							data-target="#coverphotoModal"><i class="fa fa-pencil"></i>&nbsp;Cover Photo</button> -->
+								</div>
+							</div>
+						</div>
+						<div class="gedf-wrapper">
+							<div class="page-tit-sec">
+								<div _ngcontent-c5="" class="page-title-img"><img _ngcontent-c5="" alt=""
+										class="img-circle" src="{{pageDate.page_icon}}"></div>
+
+								<div class="card left-page-det">
+
+									<div class="card-body">
+										<div class="row">
+											<div class="col-xs-12 col-sm-4 col-md-4">
+												<div class="mypag-lef">
+													<div class="h7 mypage-date"><i
+															class="fa fa-map-marker"></i>&nbsp;&nbsp;{{pageDate.city}},
+														{{pageDate.country}}</div>
+													<div class="h7 mypage-date"><i
+															class="fa fa-calendar"></i>&nbsp;&nbsp;{{pageDate.created_at}}
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4 col-md-4">
+												<div class="mypag-mid">
+													<a id="linkid" class="myedit-link" type="Edit" data-toggle="modal"
+														data-target="#myedit" (click)="editpost(pageDate)">
+														<i class="fa fa-edit"></i>
+														Edit</a>
+													<div class="h5">{{pageDate.page_name}}</div>
+													<!--<div class="h7">{{pagestringabout}}</div>-->
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4 col-md-4">
+												<div class="mypag-rig">
+													<ul class="list-group list-group-flush">
+														<li class="list-group-item">
+															<div class="h6 text-muted">Followers</div>
+															<span>{{followercount}}</span>
+														</li>
+														<li class="list-group-item">
+															<div class="h6 text-muted">Following</div>
+															<span>{{followingcount}}</span>
+														</li>
+														<!-- <li class="list-group-item">Photos & Videos			
+														<div class="photos-vid-sec">																		
+																	<a *ngFor="let postmydata of postdatadetails"><img
+																			*ngIf="postmydata.images.length != 0"
+																			src="{{postmydata.images[0].path}}" alt="Orange carrot smoothie"
+																			title="Orange carrot smoothie" width="80" height="80"></a>
+																</div>
+														</li> -->
+													</ul>
+												</div>
+											</div>
+
+											<!-- <div class="h7 text-muted">Fullname : Miracles Lee Cross</div> -->
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="row">
+
+
+
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<button type="button" id="resetid" class="btn btn-blue btn-spacer createpost-but"
+										data-toggle="modal" data-target="#createpostModal" (click)="resetForm()"><i
+											class="fa fa-edit"></i>&nbsp;Create
+										Post</button>
+									<!--- \\\\\\\Post-->
+									<div class=" gedf-card">
+										<div class="mypage-tab-sec">
+											<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+												<li class="nav-item active">
+													<a class="nav-link " id="posts-tab" data-toggle="tab" href="#posts"
+														role="tab" aria-controls="posts" aria-selected="true">Recent
+														Activity</a>
+												</li>
+												<!-- <li class="nav-item">
+													<a class="nav-link" id="images-tab" data-toggle="tab" role="tab"
+														aria-controls="images" aria-selected="false"
+														href="#images">About
+														Us</a>
+												</li> -->
+												<li class="nav-item">
+													<a class="nav-link" id="images-tab" data-toggle="tab" role="tab"
+														aria-controls="images" aria-selected="false"
+														href="#gallery">Gallery</a>
+												</li>
+											</ul>
+										</div>
+										<div class="mypage-tab-cotent">
+											<div class="tab-content" id="myTabContent">
+												<div class="tab-pane  active" id="posts" role="tabpanel"
+													aria-labelledby="posts-tab" data-layout-mode="masonry">
+													<!--- Post-->
+													<div class="content side-padded-content">
+
+														<div id="primary-content" data-page-id="407"
+															class="index-isotope hidden-on-load v3  "
+															data-layout-mode="masonry">
+															<div *ngFor="let post of postdatadetails; let i = index">
+																<article *ngIf="post.type == '1'"
+																	class="{{post.id}} manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+																	<div
+																		class="col-xs-12 col-sm-2 col-md-2 page-icon-left">
+																		<a title=""
+																			[routerLink]="['/mypagedetails',pagedata.id]"
+																			class="twPc-avatarLink"
+																			*ngIf="pagedata != null">
+																			<img [src]="pagedata.page_icon"
+																				onError="this.src='assets/images/noimage.jpg'"
+																				class="twPc-avatarImg">
+																			<!-- <img alt="{{post.page.name}}" src="assets/images/tfn.png" class="twPc-avatarImg"> -->
+																		</a>
+																		<div class="post-meta entry-meta">
+																			<div class="meta-like">
+																				<div class="meta-sec-links">
+																					<a class="heart_icon{{i}} link-icon"
+																						(click)="postlike(post.id,i)">
+																						<i class="heart_filled_{{i}} fa fa-heart-o"></i>
+																						<span>{{post.postlikes_count}}</span>
+																					</a>
+																					<a class="comment-icon"
+																						(click)="postcomment(post.id,i)">
+																						<!-- <i class="os-icon fa fa-comment-o"></i>  -->
+																						<!--<svg class="comment-view" xmlns="http://www.w3.org/2000/svg" width="24"
+																												height="24" viewBox="0 0 24 24">
+																												<path fill="none" d="M0 0h24v24H0V0z" />
+																												<path
+																													d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+																											</svg>-->
+																						<img src="assets/images/chat-icon.png"
+																							alt="chat">
+																						<span
+																							*ngIf="post.postcomment_count != 0">{{post.postcomment_count}}</span>
+																					</a>
+
+																					<!--<span class="views-icon">
+																											<i class="os-icon fa fa-eye"></i>
+																											<span *ngIf="post.postviews_count != 0">{{post.postviews_count}}</span>
+																										</span> -->
+																				</div>
+																				<span class="download-whatsapp">
+																					<a class="desktop_view"
+																						href="https://wa.me/?text={{baseURL}}/share/{{post.id}}"
+																						target='_blank'><i
+																							class="fa fa-whatsapp"></i></a>
+																					<a class="mobile_view"
+																						(click)="loadWhatsapp(post.id, post.title)"><i
+																							class="fa fa-whatsapp"></i></a>
+																					<!-- <a href="#"><i class="fa fa-download"></i></a> -->
+																					<a *ngIf="post.images.length != '0'"
+																						(click)="mediaDownload(post.images, post.preview_image)">
+																						<img src="assets/images/download-icon.png"
+																							alt="download">
+																					</a>
+																				</span>
+																				<span class="edit-dele-icons">
+																					<a id="postid" class="myedit-link"
+																						*ngIf="post.preview_url == null"
+																						type="Edit" data-toggle="modal"
+																						data-target="#mypostupdate"
+																						(click)="postpopup(post)">
+																						<i class="fa fa-edit"></i></a>
+																					<a id="postid" class="myedit-link"
+																						type="Edit"
+																						(click)="deletepost(post.id)">
+																						<i
+																							class="fa fa-trash-o"></i></a>
+																				</span>
+																			</div>
+
+																		</div>
+																	</div>
+																	<div class="col-xs-12 col-sm-10 col-md-10 pb-right">
+																		<div class="post-body">
+																			<div class="post-top-share">
+																				<i
+																					class="fa os-icon-plus share-activator-icon share-activator"></i>
+																				<span
+																					class="share-activator-label share-activator caption">Share</span>
+																				<div class="os_social-head-w">
+																					<div class="os_social"><a
+																							class="os_social_twitter_share"
+																							href="https://twitter.com/share?url={{baseURL}}/share/{{post.id}}"
+																							target="_blank"><img
+																								src="assets/images/socialicons/twitter.png"
+																								title="Twitter"
+																								class="os_social"
+																								alt="Tweet about this on Twitter"></a>
+																						<a class="os_social_google_share"
+																							href="https://plus.google.com/share?url={{baseURL}}/share/{{post.id}}"
+																							target="_blank"><img
+																								src="assets/images/socialicons/google.png"
+																								title="Google+"
+																								class="os_social"
+																								alt="Share on Google+"></a>
+																						<a class="os_social_email_share"
+																							href="mailto:?Subject=Post URL&amp;Body={{baseURL}}/share/{{post.id}}"><img
+																								src="assets/images/socialicons/email.png"
+																								title="Email"
+																								class="os_social"
+																								alt="Email this to someone"></a>
+																						<a class="os_social_facebook_share"
+																							href="https://www.facebook.com/sharer.php?u={{baseURL}}/share/{{post.id}}"
+																							target="_blank"><img
+																								src="assets/images/socialicons/facebook.png"
+																								title="Facebook"
+																								class="os_social"
+																								alt="Share on Facebook"></a>
+																						<!-- <a class="os_social_facebook_share"
+																									href="https://wa.me/?text={{baseURL}}/share/{{post.id}}"
+																									target="_blank"><img src="assets/images/socialicons/whatsapp.png"
+																										title="Whatsapp" class="os_social" alt="Share on Whatsapp"></a> -->
+																					</div>
+																				</div>
+																			</div>
+																			<!-- {{post.images.length}} -->
+																			<div class="post-media-body">
+																				<div class="figure-link-w">
+																					<a class="figure-link "
+																						style="cursor:pointer;"
+																						(click)="loadPost(post.id,i)"
+																						*ngIf="post.images.length == '1' && post.yvideos.length == '0' && post.rss_feed == '1'">
+																						<figure class="abs-image"
+																							[ngStyle]="{ 'padding-bottom': post.images[0].paddings}">
+																							<img *ngFor="let contentimg of post.images"
+																								width="400" height="267"
+																								[src]="contentimg.path"
+																								onError="this.src='assets/images/noimage.jpg'"
+																								class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																								alt="">
+																							<div class="figure-shade">
+																							</div>
+																							<i *ngIf="post.videos.length == '0'"
+																								class="figure-icon  os-new-icon os-new-icon-eye"></i>
+																							<i *ngIf="post.videos.length != '0'"
+																								class="video-post-icon  os-new-icon os-new-icon-video Video_post"></i>
+																						</figure>
+																					</a>
+
+																					<a class="figure-link "
+																						style="cursor:pointer;"
+																						(click)="loadPost(post.id,i)"
+																						*ngIf="post.images.length == '1' && post.rss_feed == '0'">
+																						<figure class="abs-image"
+																							[ngStyle]="{ 'padding-bottom': post.images[0].paddings}">
+																							<img *ngFor="let contentimg of post.images"
+																								width="400" height="267"
+																								[src]="contentimg.path"
+																								onError="this.src='assets/images/noimage.jpg'"
+																								class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																								alt="">
+																							<div class="figure-shade">
+																							</div>
+																							<i
+																								class="figure-icon  os-new-icon os-new-icon-eye"></i>
+																						</figure>
+																					</a>
+
+																					<a class="figure-link "
+																						href="{{post.preview_url}}"
+																						target="_blank"
+																						*ngIf="post.preview_url != null && post.preview_image != null">
+																						<figure class="abs-image">
+																							<img onError="this.src='assets/images/noimage.jpg'"
+																								[src]="post.preview_image"
+																								width="400" height="267"
+																								class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																								alt="">
+																							<div class="figure-shade">
+																							</div>
+																							<i
+																								class="figure-icon  os-new-icon os-new-icon-eye"></i>
+																						</figure>
+																					</a>
+																					<span class="slick-counter"
+																						*ngIf="post.SlickCounter">{{post.SlickCounter}}</span>
+																					<ngx-slick-carousel
+																						#slickModal="slick-carousel"
+																						[config]="postConfigs"
+																						(afterChange)="afterChange($event, i)"
+																						*ngIf="post.images.length > '1'">
+																						<ng-container
+																							*ngIf="post.images.length > '1' && post.yvideos.length == '0' && post.videos.length == '0' && post.rss_feed == '0'">
+																							<figure class="abs-image"
+																								*ngFor="let contentimg of post.images">
+																								<a class="figure-link "
+																									style="cursor:pointer;"
+																									(click)="loadPost(post.id,i)">
+																									<img width="400"
+																										ngxSlickItem
+																										height="267"
+																										[src]="contentimg.path"
+																										onError="this.src='assets/images/noimage.jpg'"
+																										class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																										alt="">
+																									<div
+																										class="figure-shade">
+																									</div>
+																									<i
+																										class="figure-icon  os-new-icon os-new-icon-eye"></i>
+																								</a>
+																							</figure>
+																						</ng-container>
+																						<ng-container
+																							*ngIf="post.images.length > '1' && (post.yvideos.length != '0' || post.videos.length != '0') && post.rss_feed == 0">
+																							<figure ngxSlickItem
+																								class="abs-image"
+																								*ngFor="let contentimg of post.images">
+																								<a class="figure-link "
+																									style="cursor:pointer;"
+																									(click)="loadPost(post.id,i)">
+																									<img width="400"
+																										height="267"
+																										[src]="contentimg.path"
+																										onError="this.src='assets/images/noimage.jpg'"
+																										class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																										alt="">
+																									<div
+																										class="figure-shade">
+																									</div>
+																									<i
+																										class="figure-icon  os-new-icon os-new-icon-eye"></i>
+																								</a>
+																							</figure>
+																						</ng-container>
+																						<figure ngxSlickItem
+																							*ngIf="post.yvideos.length != '0' && post.rss_feed == '0'"
+																							class="abs-image ytube">
+																							<a class="figure-link "
+																								style="cursor:pointer;"
+																								(click)="loadPost(post.id,i)">
+																								<img width="100%"
+																									height="auto"
+																									[src]="post.yvideos[0].youtubeimage"
+																									onError="this.src='assets/images/noimage.jpg'"
+																									class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																									alt="">
+																								<div
+																									class="figure-shade">
+																								</div>
+																								<i
+																									class="figure-icon  os-new-icon os-new-icon-eye"></i>
+																							</a>
+																						</figure>
+
+																						<a class="figure-link "
+																							style="cursor:pointer;"
+																							(click)="loadPost(post.id,i)"
+																							*ngIf="post.videos.length != '0' && post.rss_feed == '0'">
+																							<figure ngxSlickItem
+																								class="abs-image mpvideo">
+																								<video id="video"
+																									controls autoplay>
+																									<source
+																										src="{{post.videos[0].path}}"
+																										type="video/mp4">
+																								</video>
+																							</figure>
+																						</a>
+																					</ngx-slick-carousel>
+																					<a class="figure-link "
+																						style="cursor:pointer;"
+																						(click)="loadPost(post.id,i)"
+																						*ngIf="post.images.length == '0' && post.yvideos.length != '0' && post.videos.length == '0' && post.rss_feed == '1'">
+																						<figure class="abs-image">
+																							<img width="100%"
+																								height="auto"
+																								[src]="post.yvideos[0].youtubeimage"
+																								onError="this.src='assets/images/noimage.jpg'"
+																								class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																								alt="">
+																							<div class="figure-shade">
+																							</div>
+																							<i
+																								class="video-post-icon  os-new-icon os-new-icon-video Video_post"></i>
+																						</figure>
+																					</a>
+																					<a class="figure-link "
+																						style="cursor:pointer;"
+																						(click)="loadPost(post.id,i)"
+																						*ngIf="post.images.length == '0' && post.yvideos.length != '0' && post.videos.length == '0' && post.rss_feed == '0'">
+																						<figure class="abs-image">
+																							<img width="100%"
+																								height="auto"
+																								[src]="post.yvideos[0].youtubeimage"
+																								onError="this.src='assets/images/noimage.jpg'"
+																								class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+																								alt="">
+																							<div class="figure-shade">
+																							</div>
+																							<i *ngIf="post.yvideos.length != '0'"
+																								class="video-post-icon  os-new-icon os-new-icon-video Video_post"></i>
+																						</figure>
+																					</a>
+																					<a class="figure-link "
+																						style="cursor:pointer;"
+																						(click)="loadPost(post.id,i)"
+																						*ngIf="post.images.length == '0' && post.yvideos.length == '0' && post.videos.length != '0' && post.rss_feed == '0'">
+																						<figure
+																							class="abs-image mpvideo">
+																							<video id="video">
+																								<source
+																									src="{{post.videos[0].path}}"
+																									type="video/mp4">
+																							</video>
+																							<div class="figure-shade">
+																							</div>
+																							<i *ngIf="post.videos.length != '0'"
+																								class="video-post-icon  os-new-icon os-new-icon-video Video_post"></i>
+																						</figure>
+																					</a>
+
+																				</div>
+																			</div>
+
+																			<div class="post-content-body">
+																				<div class="page-title">
+
+																					<h2 *ngIf="pagedata != null">
+																						<div class="meta-date">Posted on
+																							<i
+																								class="os-new-icon os-new-icon-clock"></i>
+																							<time
+																								class="entry-date updated">{{post.feed_published_at}}
+																								|</time>
+																						</div><a
+																							[routerLink]="['/mypagedetails',pagedata.id]">
+																							by {{pagedata.name}}</a>
+																						<span class="views-icon"
+																							*ngIf="post.postviews_count != 0">
+																							Views :
+																							<span>{{post.postviews_count}}</span>
+																						</span>
+																					</h2>
+
+
+																				</div>
+																				<h4 class="post-title entry-title"
+																					*ngIf="post.preview_url == null"><a
+																						[innerHTML]="post.main_title"></a><a
+																						style="cursor:pointer;"
+																						(click)="loadPost(post.id,i)">
+																						<span>&nbsp;| View More</span>
+																					</a></h4>
+																				<h4 class="post-title entry-title"
+																					*ngIf="post.preview_url != null"><a
+																						href="{{post.preview_url}}"
+																						target="_blank">
+																						{{post.title}}...</a></h4>
+
+																				<div class="post-content entry-summary"
+																					*ngIf="post.preview_url != null">
+																					<div class="read-more-link"><a
+																							href="{{post.preview_url}}"
+																							target="_blank">
+																							{{post.description}}</a>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																</article>
+
+																<article *ngIf="post.type == '2'"
+																	class="{{post.post_id}} pollview manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+																	<div
+																		class="col-xs-12 col-sm-2 col-md-2 page-icon-left">
+																		<a title=""
+																			[routerLink]="['/mypagedetails',pagedata.id]"
+																			class="twPc-avatarLink"
+																			*ngIf="pagedata != null">
+																			<img [src]="pagedata.page_icon"
+																				onError="this.src='assets/images/noimage.jpg'"
+																				class="twPc-avatarImg">
+																			<!-- <img alt="{{post.page.name}}" src="assets/images/tfn.png" class="twPc-avatarImg"> -->
+																		</a>
+																	</div>
+																	<div class="col-xs-12 col-sm-10 col-md-10 pb-right">
+																		<div class="post-body">
+																			<!-- {{post.images.length}} -->
+																			<div class="post-media-body">
+																				<div class="figure-link-w">
+																					<figure class="abs-image">
+																						<ng-container
+																							*ngFor="let pollcontent of post.postoptions">
+																							<p *ngIf="pollcontent.path == null && post.pollshow == 'showpoll'"
+																								id="pollOptions{{i}}"
+																								style="cursor: pointer;"
+																								(click)="pollclick(pollcontent.id, pollcontent.post_id, pollcontent.page_id,i)">
+																								{{pollcontent.text}}</p>
+																							<div class="pool-img-sec"
+																								*ngIf="pollcontent.path != null && post.pollshow == 'showpoll'">
+																								<img style="cursor: pointer;"
+																									(click)="pollclick(pollcontent.id, pollcontent.post_id, pollcontent.page_id,i)"
+																									onError="this.src='assets/images/noimage.jpg'"
+																									[src]="pollcontent.path">
+																								<p style="cursor: pointer;"
+																									(click)="pollclick(pollcontent.id, pollcontent.post_id, pollcontent.page_id,i)">
+																									{{pollcontent.text}}
+																								</p>
+																							</div>
+																							<div class="pool-img-sec"
+																								*ngIf="post.pollshow == 'showresult'"
+																								id="pollresult{{i}}">
+																								<div class="poll-img-sec"
+																									*ngIf="pollcontent.path != null">
+																									<img onError="this.src='assets/images/noimage.jpg'"
+																										[src]="pollcontent.path">
+																								</div>
+																								<div class="poll-tit">
+																									{{pollcontent.text}}
+																								</div>
+																								<span
+																									class="pull-right poll-votes-num">{{pollcontent.votes.votes_percentage | round}}%</span>
+																								<div
+																									class="progress progress-danger active">
+																									<div class="bar"
+																										[ngStyle]="{ 'width': pollcontent.votes.votes_percentage+'%'}">
+																										&nbsp;
+																									</div>
+																								</div>
+																							</div>
+																						</ng-container>
+																					</figure>
+																				</div>
+																			</div>
+
+																			<div class="post-content-body">
+																				<div class="page-title">
+
+																					<h2 *ngIf="pagedata != null">
+																						<div class="meta-date">Posted on
+																							<i
+																								class="os-new-icon os-new-icon-clock"></i>
+																							<time
+																								class="entry-date updated">{{post.feed_published_at}}
+																								|</time>
+																						</div><a
+																							[routerLink]="['/mypagedetails',pagedata.id]">
+																							by {{pagedata.name}}</a>
+																						<span
+																							class="polls_ends">{{post.post_end_at}}</span>
+																					</h2>
+
+
+																				</div>
+																				<h4 class="post-title entry-title">
+																					{{post.title}}... <a id="postid"
+																						class="myedit-link" type="Edit"
+																						(click)="deletePoll(post.id)">
+																						<i
+																							class="fa fa-trash-o"></i></a>
+																				</h4>
+																			</div>
+
+																		</div>
+																	</div>
+																</article>
+															</div>
+														</div>
+														<div class="loadMore" style="display:none;">
+															<button (click)="fetchNextmypagefeeds()"
+																class="load_more">Load
+																More</button>
+														</div>
+														<h2 *ngIf="message"
+															style="color:#fff;text-align: center;font-size: 14px;">
+															{{message}}
+														</h2>
+													</div>
+												</div>
+												<div class="tab-pane fade" id="images" role="tabpanel"
+													aria-labelledby="images-tab">
+													<!--- \\\\\\\Post-->
+													<div class="card gedf-card">
+
+														<div class="card-body">
+															<p class="card-text">
+																{{pageDate.page_about}}
+															</p>
+														</div>
+													</div>
+													<!-- Post /////-->
+
+												</div>
+
+												<div class="tab-pane fade" id="gallery" role="tabpanel"
+													aria-labelledby="images-tab">
+
+
+													<!--- \\\\\\\Post-->
+													<div class="card gedf-card">
+
+														<div class="card-body">
+															<div class="photos-vid-sec">
+																<div id="columns">
+																	<figure *ngFor="let postmydata of postdatadetails;">
+																		<a
+																			[routerLink]="['/postdetails',postmydata.id]"><img
+																				*ngIf="postmydata.images.length != 0"
+																				src="{{postmydata.images[0].path}}"></a>
+																	</figure>
+																</div>
+															</div>
+														</div>
+
+													</div>
+													<!-- Post /////-->
+
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+									<!-- Post /////-->
+
+
+
+
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+				<rightsidebar></rightsidebar>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="coverphotoModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Upload Cover Photo</h4>
+			</div>
+			<div class="modal-body">
+				<form name="f1" action="https://www.watnew.com/pages/changecoverphoto" enctype="multipart/form-data"
+					method="post">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group">
+								<label>UploadCover Photo:</label>
+								<input type="hidden" name="pageid" value="ss-designer" />
+								<input type="hidden" name="catpageid" value="technology" />
+								<p><span class="btn btn-default btn-file">
+										Upload a Page Icon <input type="file" onchange="readURL(this);" name="page_icon"
+											id="file" (change)="coverInput($event.target.files)" required>
+									</span> {{coverName}}</p>
+								<span class="help-block"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions text-center">
+						<button type="submit" class="btn btn-submit" id="createpost" name="submit"
+							value="promotionCreation" (click)="covernamepic()">Submit</button>
+						<button type="button" id="btn_cancel" name="btn_cancel" value="cancel" class="btn default"
+							data-dismiss="coverphotoModal" onclick="closepopup();">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="createpostModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content create-post-sec">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Create Post</h4>
+			</div>
+			<div class="modal-body">
+
+				<form id="fileupload" method="POST" name="mypageForm" #mypageForm="ngForm" novalidate>
+
+					<div class="panel with-nav-tabs panel-default">
+						<div class="panel-heading">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tab1primary" class="tab1primary" data-toggle="tab"><i
+											class="pull-left fa fa-edit"></i>
+										Text</a></li>
+								<li><a href="#tab2primary" class="tab2primary" data-toggle="tab"><i
+											class="pull-left fa fa-youtube-play"></i> Youtube videos
+										link</a></li>
+								<li><a href="#tab3primary" class="tab3primary" data-toggle="tab"><i
+											class="pull-left fa fa-video-camera"></i> Upload
+										Video</a></li>
+								<li><a href="#tab4primary" class="tab4primary" data-toggle="tab"><i
+											class="pull-left fa fa-file-image-o"></i> Upload
+										Images</a></li>
+								<li><a href="#tab5primary" id="PollTab" data-toggle="tab"><i
+											class="pull-left fa fa-bar-chart"></i>
+										Create Poll</a>
+								</li>
+								<li><a href="#tab6primary" id="PreviewTab" data-toggle="tab"><i
+											class="pull-left fa fa-link"></i>
+										Preview links</a>
+								</li>
+							</ul>
+
+						</div>
+						<div class="panel-body">
+							<div class="tab-content">
+								<div class="pollHide">
+									<div class="row">
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<label>Title</label>
+												<input type="hidden" name="catpageid" value="technology" />
+												<input type="hidden" name="pageid" value="ss-designer" />
+												<!-- <input name="title" type="text" class="form-control " id="title"
+												placeholder="Page title" [(ngModel)]="postinfo.title" #title="ngModel">
+												<span class="err-msg">
+													<div *ngIf="title.touched" class="help-block">
+														<div *ngIf="title.errors?.required" class="help-block">
+															Title is required
+														</div>
+													</div>
+												</span> -->
+												<input type='title' name='title' class="form-control " id='title'
+													value='' placeholder='TItle' autocomplete='off'
+													[(ngModel)]="postinfo.title" #title="ngModel" required />
+												<span class="err-msg">
+													<div *ngIf="title.touched" class="help-block">
+														<div *ngIf="title.errors?.required" class="help-block">
+															Title is required
+														</div>
+													</div>
+												</span>
+												<span class="help-block"></span>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<label>Schedule At</label>
+												<input type="hidden" name="catpageid" value="technology" />
+												<input type="hidden" name="pageid" value="ss-designer" />
+												<!--<input name="schedule_at" type="text" id="setDateOfJoining" class="form-control"
+												placeholder="yyyy-mm-dd hh:mm:ss"  [(ngModel)]="postinfo.schedule_at"
+												#schedule_at="ngModel"> -->
+
+												<!-- <div class="example-config">
+												Selected value is: {{value | kendoDate:'MM/dd/yyyy'}}
+											</div> -->
+												<kendo-datepicker [format]="'yyyy-MM-dd'"
+													(valueChange)="onChangeDate($event)" [(value)]="value">
+												</kendo-datepicker>
+												<kendo-timepicker (valueChange)="onChangeTime($event)"
+													[(value)]="value">
+												</kendo-timepicker>
+												<!-- <span class="err-msg">
+												<div *ngIf="schedule_at.touched">
+													<div *ngIf="schedule_at.errors?.required">
+														Date & Time is required
+													</div>
+												</div>
+											</span>
+											<span class="help-block"></span> -->
+											</div>
+										</div>
+									</div>
+									<!-- <div class="tab-pane fade in active" id="tab1primary"> -->
+									<div class="form-group categories">
+										<label>Description</label>
+										<!-- <textarea id="posttext" style="border: 1px solid #ccc;" name="text"
+										[(ngModel)]="postinfo.text" #text="ngModel" class="form-control input-medium"
+										rows="5"></textarea>
+									<span class="err-msg">
+										<div *ngIf="text.touched">
+											<div *ngIf="text.errors?.required">
+												Text is required
+											</div>
+										</div>
+									</span> -->
+										<textarea id="posttext" style="border: 1px solid #ccc;" name="text"
+											[(ngModel)]="postinfo.text" #text="ngModel" class="form-control " rows="5"
+											required></textarea>
+										<span class="err-msg">
+											<div *ngIf="text.touched" class="help-block">
+												<div *ngIf="text.errors?.required" class="help-block">
+													Text is required
+												</div>
+											</div>
+										</span>
+										<!-- <span class="help-block"></span>
+									<span class="jserror" id="textposttext" style="display:none;">Please enter
+										Text</span> -->
+									</div>
+								</div>
+								<!-- </div> -->
+								<div class="tab-pane fade tab-cont-sec" id="tab2primary">
+									<div class="form-group categories">
+										<label>Youtube videos link</label>
+										<input class="form-control input-medium" style="border: 1px solid #ccc;"
+											type="text" [(ngModel)]="postinfo.externallink" #externallink="ngModel"
+											name="externallink" value="" placeholder="External Link">
+										<span class="err-msg">
+											<div *ngIf="externallink.touched">
+												<div *ngIf="externallink.errors?.required">
+													ExternalLink is required
+												</div>
+											</div>
+										</span>
+										<span class="help-block"></span>
+									</div>
+								</div>
+								<div class="tab-pane fade tab-cont-sec" id="tab3primary">
+									<div class="form-group categories">
+										<label>Upload Video</label>
+										<div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+											<div class="userpro-input">
+												<p><span class="btn btn-default btn-file">
+														Upload Video <input type="file" name="video" multiple id="file"
+															(change)="handleFileInput($event.target.files)">
+													</span></p>
+												<p *ngFor="let postvideo of postvideonames">{{postvideo.videos}}</p>
+												<div class="userpro-clear"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade tab-cont-sec" id="tab4primary">
+									<div class="form-group categories">
+										<label>Upload Images</label>
+										<div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+											<div class="userpro-input">
+												<p><span class="btn btn-default btn-file">
+														Upload Images <input type="file" name="images" multiple
+															id="file"
+															(change)="postimagesFileInput($event.target.files)">
+													</span></p>
+												<div *ngFor="let url of urls; let i = index">
+
+													<span class="circle remove" (click)="remove(url)"><i
+															class="fa fa-close"></i></span>
+													<img [src]="url" class="rounded mb-3" width="80" height="80">
+
+												</div>
+												<div class="userpro-clear"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Create Poll -->
+								<div class="tab-pane fade tab-cont-sec Pollcreate" id="tab5primary">
+									<div class="form-group categories create-polls">
+										<label> Create Poll</label>
+										<div class="create-polls-cont">
+											<input type="text" name="title" [(ngModel)]="pollinfo.title"
+												#title="ngModel" placeholder="Enter Title">
+											<a (click)="ActiveTextPoll()" style="cursor: pointer;" id="textactive"
+												class="btn-default active"><i class="fa fa-edit"></i> Text Poll</a>
+											<a (click)="ActiveImgPoll()" style="cursor: pointer;" id="imageactive"
+												class="btn-default"><i class="fa fa-file-image-o"></i> Image Poll</a>
+
+											<input type="hidden" name="polltype" id="polltype" value="">
+
+											<div class="plls-cont-sec" id='Text_Poll' style="display:block;">
+												<h3>Text Poll</h3>
+												<div class="row">
+													<div class="col-xs-12 col-sm-6 col-md-6">
+														<div class="form-group categories">
+															<input class="input-medium" type="text" name="text1"
+																[(ngModel)]="pollinfo.text1" #text1="ngModel"
+																placeholder="Option 1"> <i class="fa fa-edit"></i>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-6">
+														<div class="form-group categories">
+															<input class="input-medium" type="text" name="text2"
+																[(ngModel)]="pollinfo.text2" #text2="ngModel"
+																placeholder="Option 2"> <i class="fa fa-edit"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="plls-cont-sec" id='Image_Poll' style="display:none;">
+												<h3>Image Poll</h3>
+												<div class="row">
+													<div class="col-xs-12 col-sm-6 col-md-6">
+														<div class="form-group categories">
+															<input class="input-medium" type="file" #imageFile1
+																name="image1" id="file"
+																(change)="pollimage1upload($event.target.files)">
+															<input class="input-medium" type="text" name="image1text"
+																[(ngModel)]="pollinfo.image1text" #image1text="ngModel"
+																placeholder="Option 1"> <i class="fa fa-edit"></i>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-6">
+														<div class="form-group categories">
+															<input class="input-medium" type="file" #imageFile2
+																name="image2" id="file"
+																(change)="pollimage2upload($event.target.files)">
+															<input class="input-medium" type="text" name="image2text"
+																[(ngModel)]="pollinfo.image2text" #image2text="ngModel"
+																placeholder="Option 2"> <i class="fa fa-edit"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="plls-cont-footer">
+											<div class="row">
+												<div class="col-xs-12 col-sm-6 col-md-6">
+													<i class="fa fa-clock-o"></i>
+													<select class="form-control day-week-sec" name="selecttimeFrame"
+														[(ngModel)]="pollinfo.selecttimeFrame"
+														#selecttimeFrame="ngModel"
+														(change)="onpollchnage($event.target.value)">
+														<option [value]="">Select Poll End Date</option>
+														<option [value]="1">1 Day</option>
+														<option [value]="7">1 Week</option>
+														<option [value]="0">Custom</option>
+													</select>
+												</div>
+												<div class="col-xs-12 col-sm-6 col-md-6" id="showcustom"
+													style="display: none;">
+													<kendo-datepicker [format]="'yyyy-MM-dd HH:mm:ss'" [value]="value"
+														(valueChange)="onChangepollDate($event)"></kendo-datepicker>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<!-- Create Preview Links -->
+								<div class="tab-pane fade tab-cont-sec previewcreate" id="tab6primary">
+									<div class="form-group categories create-polls">
+										<label> Create Preview Links</label>
+										<div class="create-polls-cont">
+											<input type="text" name="previewlink" [(ngModel)]="previewfetch.previewlink"
+												#previewlink="ngModel" placeholder="Enter URL">
+											<button class="btn btn-submit"
+												(click)="getMetadata(previewfetch)">Fetch</button>
+											<img *ngIf="previewinfo.metaimage != ''" src="{{previewinfo.metaimage}}"
+												width="100%" height="auto">
+											<h3>{{previewinfo.title}}</h3>
+											<p>{{previewinfo.text}}</p>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="form-body row">
+									<div class="form-group categories col-xs-12 col-md-12">
+										<label>Category<i class="text-danger">*</i></label>
+										Selected Categories: {{checkedKeys}}
+										<kendo-treeview [nodes]="CatTree" textField="category_name"
+											kendoTreeViewCheckable kendoTreeViewExpandable kendoTreeViewHierarchyBinding
+											childrenField="items" [(checkedKeys)]="checkedKeys" [checkBy]="key"
+											[isChecked]="isChecked">
+										</kendo-treeview>
+										<span class="help-block"></span>
+									</div>
+								</div>
+								<div class="form-actions text-center">
+									<button type="submit" class="btn btn-submit createPost"
+										[disabled]="!mypageForm.valid" name="createpostbtn" id="createpostbtn"
+										(click)="addPost(postinfo)">Submit</button>
+									<button type="submit" class="btn btn-submit createPoll" name="createpollbtn"
+										id="createpostbtn" (click)="CreatePoll(pollinfo)">Create Poll</button>
+									<button type="submit" class="btn btn-submit createPreview" name="createpollbtn"
+										id="createpostbtn" (click)="previewCreate(previewinfo)">Post</button>
+									<button type="button" id="btn_cancel" class="btn default" #closePost
+										data-dismiss="modal">Cancel</button>
+									<!-- <button type="button" id="btn_cancel" name="btn_cancel" value="cancel" class="btn default"
+													data-dismiss="createpostModal" onclick="closecancel();">Cancel</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="iconphotoModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Upload Page Icon</h4>
+			</div>
+			<div class="modal-body">
+				<form name="icon" action="https://www.watnew.com/Pages/changeicon" enctype="multipart/form-data"
+					method="post">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group">
+								<label>Upload Image:</label>
+								<input type="hidden" name="pageid" value="ss-designer" />
+								<input type="hidden" name="catpageid" value="technology" />
+								<input style="border: 1px solid #ccc;" class="form-control input-medium" type="file"
+									name="icon" value="">
+								<span class="help-block"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions text-center">
+						<button type="submit" class="btn btn-submit" name="submit"
+							value="promotionCreation">Submit</button>
+						<button type="button" id="btn_cancel" name="btn_cancel" value="cancel" class="btn default"
+							onclick="closeicon();">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- edit page -->
+<div id="myedit" class="modal fade pophide" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Update Page</h4>
+			</div>
+			<div class="modal-body">
+				<div class=" userpro-float createpage-sec update-page">
+					<p>Give your business or cause a voice on watnew and connect with the users who matter to you.
+					</p>
+					<form action="" method="post" name="pageForm" #pageForm="ngForm" novalidate>
+
+						<div class='userpro-field  userpro-field-username_or_email '>
+							<div class='userpro-label iconed'>
+								<label>Page Title</label>
+								<div class='required'>*</div><span class="userpro-field-icon"><i
+										class="userpro-icon-user"></i></span>
+							</div>
+							<div class='userpro-input'>
+								<input name="name" type="text" class="form-control " id="title" placeholder="Page title"
+									[(ngModel)]="pageInfo.name" #name="ngModel" required>
+								<span class="err-msg">
+									<div *ngIf="name.touched" class="help-block">
+										<div *ngIf="name.errors?.required" class="help-block">
+											Title is required
+										</div>
+									</div>
+								</span>
+								<div class='userpro-clear'></div>
+							</div>
+						</div>
+						<div class='userpro-clear'></div>
+
+						<div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+							<div class='userpro-label iconed'>
+								<label>Page Icon</label>
+								<div class='required'>*</div><span class="userpro-field-icon"><i
+										class="userpro-icon-camera"></i></span>
+							</div>
+
+							<div class="userpro-input">
+								<div class="userpro-pic userpro-pic-profilepicture" data-remove_text="Remove">
+									<!-- <img alt="" src="assets/img/none.png" class="avatar avatar-64 photo avatar-default" height="64"
+									width="64"> -->
+								</div>
+								<!-- <div class="userpro-pic-upload ajax-file-upload" data-filetype="picture"
+								  data-allowed_extensions="png,gif,jpg,jpeg">Upload
+								  a profile picture</div><input type="file" name="page_icon" id="file"
+								  (change)="handleFileInput($event.target.files)">-->
+
+								<p><span class="btn btn-default btn-file">
+										Upload a Page Icon <input type="file" name="page_icon" id="file"
+											(change)="handlepageFileInput($event.target.files)" required>
+									</span></p>
+								<a href="{{urls}}{{pageInfo.page_icon}}" target="_blank">{{pageInfo.page_icon}}</a>
+								<div class="userpro-clear"></div>
+							</div>
+						</div>
+						<div class='userpro-clear'></div>
+
+						<div class='userpro-field  userpro-field-username_or_email '>
+							<div class='userpro-label iconed'>
+								<label>About Page</label>
+								<span class="userpro-field-icon"><i class="userpro-icon-user"></i></span></div>
+							<div class='userpro-input'>
+								<textarea name="about" type="text" class="form-control valid" id="pageabout"
+									placeholder="About Page" aria-invalid="false" [(ngModel)]="pageInfo.about"
+									#about="ngModel" required></textarea>
+								<span class="err-msg">
+									<div *ngIf="about.touched" class="help-block">
+										<div *ngIf="about.errors?.required" class="help-block">
+											About is required
+										</div>
+									</div>
+								</span>
+								<div class='userpro-clear'></div>
+							</div>
+						</div>
+						<div class='userpro-clear'></div>
+
+						<div class='userpro-field  userpro-field-username_or_email '>
+							<div class='userpro-label iconed'>
+								<label>Category</label><span class="userpro-field-icon"><i
+										class="fa fa-list-alt"></i></span>
+							</div>
+							<div class='userpro-input'>
+								Selected Categories: {{checkedKeys}}
+								<kendo-treeview [nodes]="CatTree" textField="category_name"
+									[kendoTreeViewCheckable]="{ mode: 'single' }" kendoTreeViewHierarchyBinding
+									childrenField="items" [(checkedKeys)]="checkedKeys" [checkBy]="key"
+									[isChecked]="isChecked">
+								</kendo-treeview>
+							</div>
+						</div>
+						<div class='userpro-clear'></div>
+
+						<div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+							<div class='userpro-label iconed'>
+								<label>Upload cover photo</label>
+								<span class="userpro-field-icon"><i class="userpro-icon-camera"></i></span>
+							</div>
+							<div class="userpro-input">
+								<!-- <div class="userpro-pic-upload ajax-file-upload" data-filetype="picture"
+								  data-allowed_extensions="png,gif,jpg,jpeg">Upload
+								  a cover photo</div><input type="file" name="page_header" id="file"
+								  (change)="pageHeaderFileInput($event.target.files)">-->
+								<p><span class="btn btn-default btn-file">
+										Upload a cover photo <input type="file" name="page_header" id="file"
+											(change)="pageHeaderFileInput($event.target.files)">
+									</span> </p>
+								<a href="{{urls}}{{pageInfo.page_header}}" target="_blank">{{pageInfo.page_header}}</a>
+								<div class="userpro-clear"></div>
+							</div>
+						</div>
+						<div class='userpro-clear'></div>
+
+
+						<div class="userpro-field userpro-submit userpro-column">
+							<div class="userpro-clear"></div>
+							<!-- <input type="submit" value="Submit" [disabled]="!pageForm.valid" (click)="AddPage(pageInfo)"
+								class="userpro-button" /> -->
+							<button type="submit" data-dismiss="completeModal" class="btn btn-submit"
+								[disabled]="!pageForm.valid" name="createpostbtn" id="createpostbtn"
+								(click)="AddPage(pageInfo)">Submit</button>
+							<!-- <input type="button" value="Cancel" class="userpro-button secondary" #closePost data-template="register" /> -->
+							<button type="button" id="btn_cancel" class="btn default"
+								data-dismiss="modal">Cancel</button>
+							<img src="assets/images/loading.gif" alt="" class="userpro-loading" />
+							<div class="userpro-clear"></div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--post update-->
+<div id="mypostupdate" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content create-post-sec">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Create Post</h4>
+			</div>
+			<div class="modal-body">
+				<form id="fileupload" method="POST" name="mypostUpdateForm" #mypostUpdateForm="ngForm" novalidate>
+
+					<div class="panel with-nav-tabs panel-default">
+						<div class="panel-heading">
+						</div>
+						<div class="panel-body">
+							<div class="tab-content">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<label>Title</label>
+											<input type="hidden" name="catpageid" value="technology" />
+											<input type="hidden" name="pageid" value="ss-designer" />
+											<!-- <input name="title" type="text" class="form-control " id="title"
+												placeholder="Page title" [(ngModel)]="postinfo.title" #title="ngModel">
+												<span class="err-msg">
+													<div *ngIf="title.touched" class="help-block">
+														<div *ngIf="title.errors?.required" class="help-block">
+															Title is required
+														</div>
+													</div>
+												</span> -->
+											<input type='title' name='title' class="form-control " id='title' value=''
+												placeholder='TItle' autocomplete='off' [(ngModel)]="postpopdata.title"
+												#title="ngModel" required />
+											<span class="err-msg">
+												<div *ngIf="title.touched" class="help-block">
+													<div *ngIf="title.errors?.required" class="help-block">
+														Title is required
+													</div>
+												</div>
+											</span>
+											<span class="help-block"></span>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<label>Schedule At</label>
+											<input type="hidden" name="catpageid" value="technology" />
+											<input type="hidden" name="pageid" value="ss-designer" />
+											<input name="schedule_at" type="text" id="setDateOfJoining"
+												class="form-control" placeholder="yyyy-mm-dd hh:mm:ss"
+												[(ngModel)]="postpopdata.schedule_at" #schedule_at="ngModel">
+
+											<!-- <div class="example-config">
+												Selected value is: {{value | kendoDate:'MM/dd/yyyy'}}
+											</div> -->
+											<!-- <kendo-datepicker [format]="'yyyy-MM-dd'" (valueChange)="onupdateChangeDate($event)" [(value)]="value">
+											</kendo-datepicker>
+											<kendo-timepicker (valueChange)="onupdateChangeTime($event)" [(value)]="value">
+											</kendo-timepicker> -->
+											<span class="err-msg">
+												<div *ngIf="schedule_at.touched">
+													<div *ngIf="schedule_at.errors?.required">
+														Date & Time is required
+													</div>
+												</div>
+											</span>
+											<span class="help-block"></span>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="tab-pane fade in active" id="tab1primary"> -->
+								<div class="form-group categories">
+									<label>Text</label>
+									<!-- <textarea id="posttext" style="border: 1px solid #ccc;" name="text"
+										[(ngModel)]="postinfo.text" #text="ngModel" class="form-control input-medium"
+										rows="5"></textarea>
+									<span class="err-msg">
+										<div *ngIf="text.touched">
+											<div *ngIf="text.errors?.required">
+												Text is required
+											</div>
+										</div>
+									</span> -->
+									<textarea id="posttext" style="border: 1px solid #ccc;" name="text"
+										[(ngModel)]="postpopdata.text" #text="ngModel" class="form-control " rows="5"
+										required></textarea>
+									<span class="err-msg">
+										<div *ngIf="text.touched" class="help-block">
+											<div *ngIf="text.errors?.required" class="help-block">
+												Text is required
+											</div>
+										</div>
+									</span>
+									<!-- <span class="help-block"></span>
+									<span class="jserror" id="textposttext" style="display:none;">Please enter
+										Text</span> -->
+								</div>
+								<!-- </div> -->
+								<div>
+									<div class="form-group categories">
+										<label>Youtube videos link</label>
+										<input class="form-control input-medium" style="border: 1px solid #ccc;"
+											type="text" [(ngModel)]="postpopdata.externallink" #externallink="ngModel"
+											name="externallink" value="" placeholder="External Link">
+										<span class="err-msg">
+											<div *ngIf="externallink.touched">
+												<div *ngIf="externallink.errors?.required">
+													ExternalLink is required
+												</div>
+											</div>
+										</span>
+										<span class="help-block"></span>
+									</div>
+								</div>
+								<div>
+									<div class="form-group categories">
+										<label>Upload Video</label>
+										<div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+											<div class="userpro-input">
+												<p><span class="btn btn-default btn-file">
+														Upload Video <input type="file" name="video" multiple id="file"
+															(change)="handleFileInput($event.target.files)">
+													</span></p>
+												<p *ngFor="let postvideo of postvideonames">{{postvideo.videos}}</p>
+												<div class="userpro-clear"></div>
+											</div>
+										</div>
+									</div>
+									<div>
+										<video width="320" height="240" controls
+											*ngFor="let vurl of videourls; let i = index">
+											<source [src]="vurl" type="video/mp4">
+
+											Your browser does not support the video tag.
+										</video>
+									</div>
+								</div>
+								<div>
+									<div class="form-group categories">
+										<label>Upload Images</label>
+										<div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+											<div class="userpro-input">
+												<p><span class="btn btn-default btn-file">
+														Upload Images <input type="file" name="images" multiple
+															id="file"
+															(change)="postimagesFileInput($event.target.files)">
+													</span></p>
+												<div *ngFor="let url of urls; let i = index">
+
+													<span class="circle remove" (click)="remove(url)"><i
+															class="fa fa-close"></i></span>
+													<img [src]="url" class="rounded mb-3" width="80" height="80">
+
+												</div>
+												<div class="userpro-clear"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-body row">
+									<div class="form-group categories col-xs-12 col-md-12">
+										<label>Category<i class="text-danger">*</i></label>
+										Selected Categories: {{checkedKeys}}
+										<kendo-treeview [nodes]="CatTree" textField="category_name"
+											kendoTreeViewCheckable kendoTreeViewHierarchyBinding childrenField="items"
+											[(checkedKeys)]="checkedKeys" [checkBy]="key" [isChecked]="isChecked">
+										</kendo-treeview>
+										<span class="help-block"></span>
+									</div>
+								</div>
+								<div class="form-actions text-center">
+									<button type="submit" class="btn btn-submit" [disabled]="!mypostUpdateForm.valid"
+										name="createpostbtn" id="createpostbtn"
+										(click)="updatepost(postpopdata)">Submit</button>
+									<button type="button" id="btn_cancel" class="btn default" #closePost
+										data-dismiss="modal">Cancel</button>
+									<!-- <button type="button" id="btn_cancel" name="btn_cancel" value="cancel" class="btn default"
+													data-dismiss="createpostModal" onclick="closecancel();">Cancel</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<!-- <div class="row  otp-sec new-popup" #addPosts (click)="modalopen.open()">
+	<modal #modalopen>
+		<modal-header>
+			<h1>Create Post</h1>
+		</modal-header>
+		<modal-content>
+			<i class="fa fa-check-square-o"></i> {{message}}
+		</modal-content>
+		<modal-footer>
+			<button class="btn btn-primary" (click)="modalopen.close()">okay!</button>
+		</modal-footer>
+	</modal>
+</div> -->
+
+<div class="row  otp-sec new-popup suc-popup" #responsePOPUP (click)="modalopens.open()">
+	<modal #modalopens>
+		<modal-content>
+			<!-- <i class="fa fa-check-square-o"></i> -->
+			<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+				<circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle>
+				<path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+			</svg>
+			{{message}}
+		</modal-content>
+		<modal-footer>
+			<button class="btn btn-primary" (click)="modalopens.close()">Close</button>
+		</modal-footer>
+	</modal>
+</div>
+
+
+<div class="row  otp-sec new-popup delete-to-post" id="closePost" #deletePost (click)="modalopenpost.open()">
+	<modal #modalopenpost>
+		<modal-content>
+			<span>Are you sure to delete this post?</span>
+			<a style="cursor: pointer;" (click)="Cofirmpostdelete(postID)"><i class="fa fa-frown-o"
+					aria-hidden="true"></i> Yes</a>
+			<a style="cursor: pointer;" (click)="modalopenpost.close()"><i class="fa fa-smile-o" aria-hidden="true"></i>
+				No</a>
+		</modal-content>
+		<modal-footer>
+			<button class="btn btn-primary" (click)="modalopenpost.close()">Close</button>
+		</modal-footer>
+	</modal>
+</div>
+
+
+<div class="row  otp-sec new-popup" id="closePoll" #delete_Poll (click)="modalopenpoll.open()">
+	<modal #modalopenpoll>
+		<modal-content>
+			<span>Are you sure to delete this poll?</span>
+			<a style="cursor: pointer;" (click)="Cofirmpolldelete(pollID)"><i class="fa fa-frown-o"
+					aria-hidden="true"></i> Yes</a>
+			<a style="cursor: pointer;" (click)="modalopenpoll.close()"><i class="fa fa-smile-o" aria-hidden="true"></i>
+				No</a>
+		</modal-content>
+		<modal-footer>
+			<button class="btn btn-primary" (click)="modalopenpoll.close()">Close</button>
+		</modal-footer>
+	</modal>
+</div>
+
+
+<div class="row  otp-sec new-popup" #FeedsPOPUP (click)="modalopened.open()">
+	<modal #modalopened>
+		<modal-content>
+			<i class="fa fa-frown-o" aria-hidden="true"></i> {{postmessage}}
+		</modal-content>
+		<modal-footer>
+			<button class="btn btn-primary" (click)="modalopened.close()">Close</button>
+		</modal-footer>
+	</modal>
+</div>
+
+<!-- <div class="row  otp-sec new-popup" #addPoll (click)="modalopen.open()">
+	<modal #modalopen>
+		<modal-header>
+			<h1>Create Poll</h1>
+		</modal-header>
+		<modal-content>
+			<i class="fa fa-check-square-o"></i> {{successMessage}}
+		</modal-content>
+		<modal-footer>
+			<button class="btn btn-primary" (click)="modalopen.close()">okay!</button>
+		</modal-footer>
+	</modal>
+</div> -->
+
+
+<!-- Post Popup-->
+<div class="row  post-det-popup" #Single_post (click)="modalopen.open()">
+	<modal #modalopen>
+		<modal-content>
+			<div class="row">
+				<div class="col-xs-12 col-sm-7 col-md-7">
+					<article id="post-161"
+						class="pluto-page-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+						<div class="post-body p-bot-10">
+							<div class="single-post-top-features">
+								<div class="single-post-top-share">
+									<i class="os-new-icon os-new-icon-share-2 share-activator-icon share-activator"></i>
+									<span class="share-activator-label share-activator caption">Share</span>
+									<div class="os_social-head-w">
+										<div class="os_social"><a class="os_social_twitter_share"
+												href="https://twitter.com/share?url={{baseURL}}/share/{{postid}}"
+												target="_blank"><img src="assets/images/socialicons/twitter.png"
+													title="Twitter" class="os_social"
+													alt="Tweet about this on Twitter"></a><a
+												class="os_social_google_share"
+												href="https://plus.google.com/share?url={{baseURL}}/share/{{postid}}"
+												target="_blank"><img src="assets/images/socialicons/google.png"
+													title="Google+" class="os_social" alt="Share on Google+"></a>
+											<a class="os_social_email_share"
+												href="mailto:?Subject=Post URL&amp;Body={{baseURL}}/share/{{postid}}"><img
+													src="assets/images/socialicons/email.png" title="Email"
+													class="os_social" alt="Email this to someone"></a>
+											<a class="os_social_facebook_share"
+												href="http://www.facebook.com/sharer.php?u={{baseURL}}/share/{{postid}}"
+												target="_blank"><img src="assets/images/socialicons/facebook.png"
+													title="Facebook" class="os_social" alt="Share on Facebook"></a>
+											<a class="os_social_whatsapp_share"
+												href="https://wa.me/?text={{baseURL}}/share/{{postid}}"
+												target="_blank"><img src="assets/images/socialicons/whatsapp.png"
+													title="Whatsapp" class="os_social" alt="Share on Whatsapp"></a>
+										</div>
+									</div>
+								</div>
+								<a *ngIf="myfav == '0'" (click)="Addfavourite()"
+									class="addfav single-post-top-reading-mode hidden-xs">
+									<i class="fa fa-star-o rotate" aria-hidden="true"></i>
+									<span>Add to Favorites</span>
+								</a>
+								<a *ngIf="showfavourite == 'true' || myfav == '1'" (click)="Addfavourite()"
+									class="addedfav single-post-top-reading-mode hidden-xs">
+									<i class="fa fa-star-o rotate" aria-hidden="true"></i>
+									<span>Added to Favorites</span>
+								</a>
+							</div>
+
+
+							<div class="post-media-body m-b-none">
+								<div class="figure-link-w">
+									<span class="slick-counter" *ngIf="SlickCounter">{{SlickCounter}}</span>
+									<ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+										[config]="postConfigs" (afterChange)="afterpostChange($event)">
+										<ng-container *ngIf="postimages && postVideosiframe == ''">
+											<figure ngxSlickItem *ngFor="let contentimg of postimages"
+												class="abs-image">
+												<img width="100%" height="auto"
+													onError="this.src='assets/images/noimage.jpg'"
+													[src]="contentimg.path"
+													class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+													alt="">
+											</figure>
+										</ng-container>
+										<figure ngxSlickItem *ngIf="postyvideos" class="abs-image ytube"
+											[innerHtml]="postyvideos">
+										</figure>
+										<figure ngxSlickItem *ngIf="postVideos" class="abs-image mpvideo">
+											<video width="100%" height="auto" autoplay controls>
+												<source src="{{postVideos}}" type="video/mp4">
+											</video>
+										</figure>
+										<figure ngxSlickItem *ngIf="postVideosiframe" class="abs-image videosframe"
+											[innerHtml]="postVideosiframe">
+										</figure>
+									</ngx-slick-carousel>
+								</div>
+
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="col-xs-12 col-sm-5 col-md-5">
+					<div class="sidebar-under-post">
+						<div class="">
+							<div class="page-title">
+								<div class="row">
+									<div class="col-xs-12 col-sm-3 col-md-2">
+										<a title="{{page_name}}" [routerLink]="['/mypagedetails',page_ID]"
+											class="twPc-avatarLink">
+											<img onError="this.src='assets/images/noimage.jpg'" [src]="page_icon"
+												class="twPc-avatarImg">
+											<!-- <img alt="{{post.page.name}}" src="assets/images/tfn.png" class="twPc-avatarImg"> -->
+										</a>
+									</div>
+									<div class="col-xs-12 col-sm-9 col-md-10">
+										<div class="post-meta-top entry-meta">
+											<div class="ppd">
+												<div class="post-author" *ngIf="pageCommentstatus == 'true'">Courtesy
+													by <strong class="author vcard"><a class="url fn n"
+															[routerLink]="['/mypagedetails',page_ID]">{{page_name}}</a></strong>
+												</div>
+												<div class="post-date">Posted on <time class="entry-date updated"
+														datetime="2014-05-05T21:26:35+00:00"><b>{{feed_published_at}}</b></time>
+												</div>
+												<div class="post-author" *ngIf="pageCommentstatus == 'false'">by
+													<strong class="author vcard"><a class="url fn n"
+															[routerLink]="['/mypagedetails',page_ID]">{{page_name}}</a></strong>
+												</div>
+												<div class="p-d-views">
+													<span class="views-icon" *ngIf="postviews_count != 0">
+														Views :
+														<span>{{postviews_count}}</span>
+													</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<h1 class="post-title entry-title post-det-tit" [innerHtml]="post_title"></h1>
+							<div class="post-content entry-content">
+								<p [innerHtml]="post_description"></p>
+							</div>
+
+							<div class="postdetails-com-abuse">
+								<div class="post-meta entry-meta">
+									<div class="row">
+										<div class="col-xs-12 col-sm-8 col-md-8">
+											<div class="meta-like">
+												<div class="meta-sec-links">
+													<a class="heart_icon{{postIndex}} link-icon"
+														(click)="postlike(postid,postIndex)">
+														<i class="heart_filled_{{postIndex}} fa fa-heart-o"></i>
+														<span>{{postlikes_count}}</span>
+													</a>
+													<!-- <a class="comment-icon">
+														
+														<svg class="comment-view" xmlns="http://www.w3.org/2000/svg"
+															width="24" height="24" viewBox="0 0 24 24">
+															<path fill="none" d="M0 0h24v24H0V0z" />
+															<path
+																d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+														</svg>
+														<span
+															*ngIf="postcomment_count != 0">{{postcomment_count}}</span>
+													</a> -->
+												</div>
+												<span class="download-whatsapp">
+													<a class="desktop_view"
+														href="https://wa.me/?text={{baseURL}}/share/{{postid}}"
+														target='_blank'><i class="fa fa-whatsapp"></i></a>
+													<a class="mobile_view"
+														(click)="loadWhatsapp(postid, post_single_title)"><i
+															class="fa fa-whatsapp"></i></a>
+													<a *ngIf="postimagesCount != '0'"
+														(click)="mediaDownload(postData.images, postData.preview_image)"><svg
+															class="down-color" xmlns="http://www.w3.org/2000/svg"
+															width="24" height="24" viewBox="0 0 24 24">
+															<path
+																d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+															<path fill="none" d="M0 0h24v24H0z" /></svg></a>
+												</span>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-4">
+											<ul class="nav navbar-nav">
+												<li class="dropdown">
+													<a class="dropdown-toggle" style="cursor:pointer;"
+														(click)="TriggerSection()"> <span
+															class="fa fa-ellipsis-v pull-right"></span></a>
+													<ul class="dropdown-menu" id="openSection">
+														<li><a [routerLink]="['/abusereport',postid]">Abuse Report</a>
+														</li>
+														<li class="divider"></li>
+														<li><a [routerLink]="['/enquiry',postid]">Send an Enquiry</a>
+														</li>
+														<li class="divider"></li>
+														<li><a style="cursor:pointer;"
+																(click)="disablePost(page_ID)">Not Interested</a></li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="widget">
+								<h4 class="widget-title">Comments</h4>
+								<div class="comments-sec" [ngClass]="(CommentLength != '0')?'comment_active':''">
+									<div
+										*ngIf="post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'">
+										<form action="" method="post" name="commentForm" #commentForm="ngForm"
+											novalidate>
+											<textarea type="text" name="comment" [(ngModel)]="commentInfo.comment"
+												#comment="ngModel" (keydown)="AddComment($event)"
+												placeholder="Write a comment....."></textarea>
+											<!-- <input type="submit" value="Submit" [disabled]="!commentForm.valid"
+                                            (click)="AddComment(commentInfo)" class="userpro-buttons" /> -->
+										</form>
+									</div>
+									<p style="text-align:center;color:#fff" *ngIf="CommentLength == '0'">
+										No Comments Found for this post.</p>
+									<p style="text-align:center;color:#fff"
+										*ngIf="post_comment_status == 'true' || postcategories_comment_count == '1' || page_comment_status == 'true'">
+										Comments are disabled for this post.</p>
+									<div class="commentScroll">
+										<div class="comment_list"
+											*ngFor="let commentdata of CommentData; let i = index;">
+
+											<p>
+												<img alt="" class="comment-icon"
+													*ngIf="commentdata.user_profile_pic != null"
+													onError="this.src='assets/icon/none.png'"
+													[src]="commentdata.user_profile_pic.fullpathimage">
+												<img alt="" class="comment-icon"
+													*ngIf="commentdata.user_profile_pic == null"
+													src="assets/icon/none.png">
+												<span class="comment-area">
+													<p class="nickname" *ngIf="commentdata.user_details != null">
+														{{commentdata.user_details.nick_name}}</p>
+													<p class="nickname" *ngIf="commentdata.user_details == null">
+														{{commentdata.nick_name}}</p>
+													<p class="comment-tex">{{commentdata.text}} <span
+															class="com-edit-sec"
+															*ngIf="post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+															(click)="replyComment(commentdata.id)">Reply</span>
+													</p>
+
+													<!--<span class="com-edit-sec"
+                                                *ngIf="commentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                (click)="editComment(commentdata.id, commentdata.text)">Edit
+                                                <span>|</span> </span>
+                                            <span class="com-edit-sec"
+                                                *ngIf="commentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                (click)="deleteComment(commentdata.id)">Delete
+                                                <span>|</span>
+                                            </span> -->
+
+												</span>
+											</p>
+											<a class="Show_replies" *ngIf="commentdata.commentsreplies.length != 0"
+												(click)="ShowReplies()">View Replies <i
+													class="fa fa-mail-reply"></i></a>
+											<ul class="nav navbar-nav dropdown-ed">
+												<li class="dropdown">
+													<a style="cursor: pointer;" class="dropdown-toggle comment-ed"
+														(click)="MainCommentSection(i)"
+														*ngIf="commentdata.user_id == userID">
+														<span class="fa fa-ellipsis-v pull-right"></span></a>
+													<ul class="dropdown-menu mainComment" id="mainComment{{i}}">
+														<li><a style="cursor: pointer;"
+																*ngIf="commentdata.user_id == userID && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+																(click)="editComment(commentdata.id, commentdata.text)">Edit</a>
+														</li>
+														<li class="divider"></li>
+														<li><a style="cursor: pointer;"
+																*ngIf="commentdata.user_id == userID && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+																(click)="deleteComment(commentdata.id)">Delete</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+											<!-- Edit -->
+											<div class="edit_comment" id="editcmnt{{commentdata.id}}"
+												style="display:none;">
+												<textarea type="text" name="comment" [(ngModel)]="editInfo.comment"
+													#comment="ngModel" (keydown)="editCommnt($event, commentdata.id, i)"
+													placeholder="Write a comment....."></textarea>
+												<!-- <input type="submit" value="Edit" (click)="editCommnt(editInfo, commentdata.id)"
+                                            class="edit-buttons" /> -->
+											</div>
+
+											<!-- Reply -->
+											<div class="reply_comment" id="editreply{{commentdata.id}}"
+												style="display:none;">
+												<textarea type="text" name="comment" [(ngModel)]="replyInfo.comment"
+													#comment="ngModel"
+													(keydown)="replyCommnt($event, commentdata.id, i)"
+													placeholder="Write a comment....."></textarea>
+												<!-- <input type="submit" value="Reply"
+                                            (click)="replyCommnt(replyInfo, commentdata.id)" class="edit-buttons" /> -->
+											</div>
+
+
+
+											<div class="subcomment_list"
+												*ngFor="let subcommentdata of commentdata.commentsreplies; let j = index;">
+												<img alt="" class="comment-icon"
+													*ngIf="subcommentdata.user_profile_pic != null"
+													onError="this.src='assets/icon/none.png'"
+													[src]="subcommentdata.user_profile_pic.fullpathimage">
+												<img alt="" class="comment-icon"
+													*ngIf="subcommentdata.user_profile_pic == null"
+													src="assets/icon/none.png">
+												<div class=""></div>
+												<span
+													*ngIf="subcommentdata.user_details != null">{{subcommentdata.user_details.nick_name}}</span>
+												<span
+													*ngIf="subcommentdata.user_details == null">{{subcommentdata.nick_name}}</span>
+
+												{{subcommentdata.text}}
+
+												<!-- <span class="com-edit-sec"
+                                                *ngIf="subcommentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                (click)="subeditComment(subcommentdata.id, subcommentdata.text)">Edit
+                                                <span>|</span></span>
+                                            <span class="com-edit-sec"
+                                                *ngIf="subcommentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                (click)="subdeleteComment(subcommentdata.id)">Delete
+                                                <span>|</span></span>-->
+												<span class="com-edit-sec"
+													*ngIf="post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+													(click)="subreplyComment(subcommentdata.id)">Reply</span>
+
+												<ul class="nav navbar-nav edit-dele-sec">
+													<li class="dropdown">
+														<a style="cursor: pointer;" class="dropdown-toggle"
+															(click)="SubCommentSection(j)"
+															*ngIf="subcommentdata.user_id == userID"> <span
+																class="fa fa-ellipsis-h pull-right"></span></a>
+														<ul class="dropdown-menu subComment" id="subComment{{j}}">
+															<li><a style="cursor: pointer;"
+																	*ngIf="subcommentdata.user_id == userID && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+																	(click)="subeditComment(subcommentdata.id, subcommentdata.text)">Edit</a>
+															</li>
+															<li class="divider"></li>
+															<li><a style="cursor: pointer;"
+																	*ngIf="subcommentdata.user_id == userID && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+																	(click)="subdeleteComment(subcommentdata.id)">Delete</a>
+															</li>
+														</ul>
+													</li>
+												</ul>
+												<!-- Edit -->
+												<div class="edit_comment" id="subeditcmnt{{subcommentdata.id}}"
+													style="display:none;">
+													<textarea type="text" name="comment"
+														[(ngModel)]="subeditInfo.comment" #comment="ngModel"
+														(keydown)="subeditCommnt($event, subcommentdata.id, subcommentdata.parent_id, i, j)"
+														placeholder="Write a comment....."></textarea>
+													<!-- <input type="submit" value="Edit"
+                                                (keydown)="subeditCommnt($event, subcommentdata.id, subcommentdata.parent_id)"
+                                                class="edit-buttons" /> -->
+												</div>
+
+												<!-- Reply -->
+												<div class="reply_comment" id="subeditreply{{subcommentdata.id}}"
+													style="display:none;">
+													<textarea type="text" name="comment"
+														[(ngModel)]="subreplyInfo.comment" #comment="ngModel"
+														(keydown)="subreplyCommnt($event, subcommentdata.id, subcommentdata.parent_id, i)"
+														placeholder="Write a comment....."></textarea>
+													<!-- <input type="submit" value="Reply"
+                                                (keydown)="subreplyCommnt($event, commentdata.id, subcommentdata.parent_id)"
+                                                class="edit-buttons" /> -->
+												</div>
+											</div>
+
+										</div>
+
+										<div class="view-mc"><a class="more_comments" *ngIf="NextPageURL != null"
+												(click)="fetchNextCommnets()">View More
+												Comments</a></div>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-primary" (click)="modalopen.close()">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</modal-content>
+	</modal>
+</div>
+
+
+
+<script type="text/javascript">
+	function toggleChevron(e) {
+		$(e.target)
+			.prev('.panel-heading')
+			.find("i.indicator")
+			.toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+	}
+	$('#accordion').on('hidden.bs.collapse', toggleChevron);
+	$('#accordion').on('shown.bs.collapse', toggleChevron);
+</script>

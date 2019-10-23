@@ -1,0 +1,334 @@
+<div class="header-sec">
+        <div class="container-fluid">
+                <div class="menu-block ">
+
+                        <div class="logo">
+                                <a routerLink="/home"><img src="assets/images/wn-logo.png" alt="watnew"></a>
+                        </div>
+
+                        <div class="search-form-sec" id="search_widget">
+                                <form method="get" class="search-form" action="#" autocomplete="off">
+                                        <div class="search-field-w">
+                                                <input type="search" autocomplete="off" class="search-field"
+                                                        placeholder="Search" value="" name="keyword"
+                                                        [(ngModel)]="searchInfo.keyword" #keyword="ngModel"
+                                                        title="Search for:"
+                                                        (input)="onSearchChange($event.target.value)" />
+                                                <i class="fa fa-spinner fa-spin searchSpinner"></i>
+                                                <input type="submit" class="search-submit" value="Search"
+                                                        (click)="search(searchInfo)" />
+                                                <ul class="filter-select search_result searchActive">
+                                                        <li class="filter-select-list">
+                                                                <p class="artist-name"
+                                                                        *ngFor="let searchRes of searchresult; let i = index"
+                                                                        (click)="SearchRes(searchRes,i)">
+                                                                        <img *ngIf="searchRes.images.length != '0'"
+                                                                                src="{{searchRes.images[0].path}}">
+                                                                        <span>{{searchRes.title}}</span></p>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                </form>
+                        </div>
+
+                        <div class="menu-activated-on-click">
+                                <div class="os_menu">
+                                        <ul id="menu-side-menu" class="menu">
+                                                <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/home"> <img class="home-icon"
+                                                                        src="assets/images/home-icon.png"
+                                                                        alt="Home"></a>
+                                                </li>
+                                                <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-912">
+                                                        <a routerLink="/trending">Trending</a>
+                                                </li>
+                                                <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/celebritypage">Celebrity</a>
+                                                </li>
+                                                <li id="menu-item-912" *ngIf="isLoggedIn == 'true'"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/mypagefeeds">
+                                                                Following Feeds</a>
+                                                </li>
+                                                <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/games">Games</a>
+                                                </li>
+                                                <!-- <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/packages">Packages</a>
+                                                </li> -->
+                                                <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/live">Live</a>
+                                                </li>
+                                                <li id="menu-item-912"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/pages">Pages</a>
+                                                </li>
+
+
+                                                <li id="menu-item-912" *ngIf="isLoggedPage == ''"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/createpage">Create Page</a>
+                                                </li>
+                                                <!-- <li id="menu-item-912" *ngIf="isLoggedIn != ''"
+                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                <a routerLink="/activities">Your Recent Activities</a>
+                                        </li> -->
+
+                                                <li id="menu-item-912" *ngIf="isLoggedIn != 'true'"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                        <a routerLink="/login">Login</a>
+                                                </li>
+
+                                                <li id="menu-item-912" (click)="userlinks()"
+                                                        style="cursor: pointer;display:none;"
+                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-912">
+                                                        <a>Settings</a>
+                                                        <ul class="sub-menu showsub" style="display:none;">
+
+
+                                                                <!-- <li id="menu-item-912" *ngIf="isLoggedPage != ''"
+                                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                <a routerLink="/mypage">My Page</a>
+                                                        </li> -->
+
+
+                                                                <li id="menu-item-912" *ngIf="isLoggedIn != 'true'"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a routerLink="/login">Login</a>
+                                                                </li>
+                                                                <li *ngIf="isLoggedIn != 'true'" id="menu-item-912"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a routerLink="/signup">Sign
+                                                                                Up</a>
+                                                                </li>
+                                                                <!-- <li id="menu-item-912"
+                                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                <a routerLink="#">Members Sign Up</a>
+                                                        </li> -->
+                                                        </ul>
+                                                </li>
+
+                                        </ul>
+                                        <ul class="navbar-profile" *ngIf="isLoggedIn == 'true'">
+                                                <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
+                                                                        class="fa fa-user"></i></a>
+                                                        <ul class="dropdown-menu">
+                                                                <li id="menu-item-912" *ngIf="isLoggedIn != ''"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a routerLink="/myprofile"><i
+                                                                                        class="fa fa-user-circle"></i>
+                                                                                Profile</a>
+                                                                </li>
+                                                                <li id="menu-item-912" *ngIf="isLoggedPage != ''"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-912">
+                                                                        <a routerLink="/mypage"><i
+                                                                                        class="fa fa-file-text-o"></i>
+                                                                                My Page</a>
+                                                                </li>
+                                                                <li id="menu-item-912" *ngIf="isLoggedIn != ''"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-912">
+                                                                        <a routerLink="/activitylog"><i
+                                                                                        class="fa fa-history"></i>
+                                                                                Activity Log</a>
+                                                                </li>
+                                                                <li id="menu-item-912" *ngIf="isLoggedIn != ''"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-912">
+                                                                        <a routerLink="/myfavourites"><i
+                                                                                        class="fa fa-heart"></i> My
+                                                                                Favourites</a>
+                                                                </li>
+                                                                <li id="menu-item-912" *ngIf="isLoggedIn != ''"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a routerLink="/myfollowing"><i
+                                                                                        class="fa fa-user-plus"></i>
+                                                                                Following</a>
+                                                                </li>
+                                                                <li id="menu-item-912" *ngIf="isLoggedIn != ''"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a routerLink="/changepassword"><i
+                                                                                        class="fa fa-unlock-alt"></i>
+                                                                                Change
+                                                                                Password</a>
+                                                                </li>
+                                                                <li id="menu-item-912" (click)="deleteAccount()"
+                                                                        style="cursor: pointer;"
+                                                                        *ngIf="isLoggedIn == 'true'"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a style="cursor: pointer;"><i
+                                                                                        class="fa fa-trash-o"></i>
+                                                                                Delete
+                                                                                Account</a>
+                                                                </li>
+
+                                                                <li id="menu-item-912" (click)="logout()"
+                                                                        *ngIf="isLoggedIn == 'true'"
+                                                                        style="cursor: pointer;"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a style="cursor: pointer;"><i
+                                                                                        class="fa fa-power-off"></i> Log
+                                                                                Out</a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                        </ul>
+
+                                        <ul class="navbar-edit" *ngIf="isLoggedIn == 'true'">
+                                                <li class="dropdown" *ngIf="isLoggedPage != ''">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
+                                                                        class="fa fa-pencil"></i></a>
+                                                        <ul class="dropdown-menu">
+                                                                <li id="menu-item-912"
+                                                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912">
+                                                                        <a routerLink="/mypage"><i
+                                                                                        class="fa fa-pencil-square-o"></i>
+                                                                                Create
+                                                                                Post</a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li *ngIf="isLoggedIn != ''" class="dropdown" (click)="openNotify()">
+                                                        <a class="notifysections">
+                                                                <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                                                <span
+                                                                        class="badge badge-notify">{{unread_notification_count}}</span>
+                                                        </a>
+                                                        <div class="notifySection" id="notifySection">
+                                                                <div class="notify-header">
+                                                                        <h3>Notifications</h3>
+                                                                        <div class="mark-all"><a
+                                                                                        style="cursor: pointer;"
+                                                                                        (click)="markRead()">Mark All as
+                                                                                        Read</a></div>
+                                                                </div>
+                                                                <ul infinite-scroll [infiniteScrollDistance]="2"
+                                                                        [infiniteScrollThrottle]="50"
+                                                                        [infiniteScrollContainer]="'.notifySection ul'"
+                                                                        (scrolled)="onScroll()">
+                                                                        <li *ngFor="let notify of notificationList;let i= index;"
+                                                                                class="notifyList">
+                                                                                <div class="notifymsg" [ngClass]="{
+                                                                                                'active':notify.read_status == '0',
+                                                                                                'inactive':notify.read_status == '1'
+                                                                                                }">
+                                                                                        <a style="cursor: pointer;"
+                                                                                                (click)="NotifyRead(notify.id,i)">
+                                                                                                <img onError="this.src='assets/images/login-logo-img.jpg'"
+                                                                                                        [src]="notify.image">
+                                                                                                <p>{{notify.message}}
+                                                                                                </p>
+                                                                                                <span
+                                                                                                        class="notifyread">{{notify.created_at}}</span>
+                                                                                        </a>
+                                                                                </div>
+
+                                                                        </li>
+                                                                </ul>
+                                                        </div>
+                                                </li>
+                                        </ul>
+
+                                </div>
+                        </div>
+
+
+                        <div class="nav-right">
+                                <button class="signup-but" [routerLink]="['/signup']" *ngIf="isLoggedIn != 'true'">
+                                        Sign Up</button>
+                                <button class="select-category-but" [routerLink]="['/changecategories']">
+                                        Change Category</button>
+
+                        </div>
+                        <!-- <div class="menu-left-i">
+                
+                <div class="profile" *ngIf="isLoggedIn == 'true'">
+                        <div class="profile_pic">
+                                <a routerLink="/myprofile"><img *ngIf="user_Picture != ''" src="{{user_Picture}}"
+                                                alt="..." class="img-circle profile_img"></a>
+                                <a routerLink="/myprofile"><img *ngIf="user_Picture == ''"
+                                                src="assets/images/avatar-img.jpg" alt="..."
+                                                class="img-circle profile_img"></a>
+                                <div class="availability-bubble online"></div>
+                        </div>
+                        <div class="profile_info">
+                                <h2>{{user_nickName}}</h2>
+                        </div>
+                </div>
+                <form method="get" class="search-form" action="#" autocomplete="off">
+                        <div class="search-field-w">
+                                <input type="search" autocomplete="off" class="search-field" placeholder="Search"
+                                        value="" name="keyword" [(ngModel)]="searchInfo.keyword" #keyword="ngModel"
+                                        title="Search for:" (input)="onSearchChange($event.target.value)" />
+                                <i class="fa fa-spinner fa-spin searchSpinner"></i>
+                                <input type="submit" class="search-submit" value="Search"
+                                        (click)="search(searchInfo)" />
+                                <ul class="filter-select search_result searchActive">
+                                        <li class="filter-select-list">
+                                                <p class="artist-name"
+                                                        *ngFor="let searchRes of searchresult; let i = index"
+                                                        (click)="SearchRes(searchRes,i)">
+                                                        <img *ngIf="searchRes.images.length != '0'"
+                                                                src="{{searchRes.images[0].path}}">
+                                                        <span>{{searchRes.title}}</span></p>
+                                        </li>
+                                </ul>
+                        </div>
+                </form>
+        </div>-->
+
+                </div>
+                <div class="menu-toggler-w">
+                        <a class="menu-toggler" (click)="openMenu()">
+                                <i class="os-new-icon os-new-icon-menu"></i>
+                                <span class="menu-toggler-label">Menu</span>
+                        </a>
+                        <a href="#" class="logo">
+                                <img src="assets/images/wn-logo.png" alt="">
+                        </a>
+                        <div class="search-and-sidebar-togglers">
+                                <a style="cursor:pointer;" (click)="openSearch()" class="search-trigger">
+                                        <i class="os-new-icon os-new-icon-search"></i>
+                                </a>
+
+                                <a href="#" class="sidebar-toggler">
+                                        <i class="os-new-icon os-new-icon-grid"></i>
+                                </a>
+
+
+                        </div>
+                        <div class="mb-search">
+                                <div class="search-form-sec" id="search_widget">
+                                        <form method="get" class="search-form" action="#" autocomplete="off">
+                                                <div class="search-field-w">
+                                                        <input type="search" autocomplete="off" class="search-field"
+                                                                placeholder="Search" value="" name="keyword"
+                                                                [(ngModel)]="searchInfo.keyword" #keyword="ngModel"
+                                                                title="Search for:"
+                                                                (input)="onSearchChange($event.target.value)" />
+                                                        <i class="fa fa-spinner fa-spin searchSpinner"></i>
+                                                        <input type="submit" class="search-submit" value="Search"
+                                                                (click)="search(searchInfo)" />
+                                                        <ul class="filter-select search_result searchActive">
+                                                                <li class="filter-select-list">
+                                                                        <p class="artist-name"
+                                                                                *ngFor="let searchRes of searchresult; let i = index"
+                                                                                (click)="SearchRes(searchRes,i)">
+                                                                                <img *ngIf="searchRes.images.length != '0'"
+                                                                                        src="{{searchRes.images[0].path}}">
+                                                                                <span>{{searchRes.title}}</span></p>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+
+        </div>
+</div>

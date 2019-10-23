@@ -1,0 +1,66 @@
+<h2>Recommended to follow</h2>
+<ul class="right-follow-sec">
+    <li *ngFor="let suggtn of suggestionsData | slice:0:5 let i = index;">
+        <div class="rf-th"><a [routerLink]="['/mypagedetails',suggtn.id]"><img _ngcontent-c1="" class="twPc-avatarImg" onError="this.src='assets/images/noimage.jpg'"
+                [src]="suggtn.page_icon"></a></div>
+        <a [routerLink]="['/mypagedetails',suggtn.id]"><h3>{{suggtn.name}}</h3></a>
+        <p>{{suggtn.city}}, {{suggtn.country}} <button class="follow-but-ri"
+                (click)="following(suggtn,i)">Follow</button></p>
+
+    </li>
+</ul>
+
+
+<aside id="zilla_social_widget-2" class="widget-odd widget-3 widget widget_zilla_social_widget">
+    <h2>Social Links</h2>
+    <div class="zilla-social size-32px">
+        <a href="https://www.facebook.com/watnewapp" class="Facebook" target="_blank"><img
+                src="assets/images/Facebook.png" alt="Facebook" /></a>
+        <a href="https://www.instagram.com/watnewapp" class="Instagram" target="_blank"><img
+                src="assets/images/Instagram.png" alt="Instagram" /></a>
+        <a href="https://twitter.com/watnewapp" class="Google" target="_blank"><img
+                src="assets/images/socialicons/twitter.png" alt="Google" /></a>
+    </div>
+</aside>
+
+<div class="slickAds sponsored-sec">
+    <h2>Sponsored</h2>
+    <ngx-slick-carousel #slickModal="slick-carousel" [config]="slides">
+        <ng-container *ngFor="let addata of adsarray">
+            <aside ngxSlickItem *ngIf="addata.video == ''"><a href="{{addata.url}}" target="_blank"><img style="width: 100%;"
+                    onError="this.src='assets/images/noimage.jpg'" [src]="addata.image"></a></aside>
+        </ng-container>
+    </ngx-slick-carousel>
+</div>
+
+<div class="popular-tre-sec">
+<h2>Popular Trending</h2>
+<ul class="pop-trending-sec">
+    <li *ngFor="let trendres of trendata | slice:0:7;">
+        <div class="rf-th" *ngIf="trendres.images.length != 0"><a [routerLink]="['/postdetails',trendres.id]"><img _ngcontent-c1="" class="twPc-avatarImg"
+                onError="this.src='assets/images/noimage.jpg'" [src]="trendres.images[0].path"></a>
+        </div>
+        <div class="rf-th" *ngIf="trendres.images.length == 0 && trendres.yvideos.length == 0 && trendres.videos.length == 0"><a [routerLink]="['/postdetails',trendres.id]"><img _ngcontent-c1="" class="twPc-avatarImg"
+                src="assets/images/noimage.jpg"></a>
+        </div>
+        <div class="rf-th"
+            *ngIf="trendres.yvideos.length != 0 && trendres.images.length == 0 && trendres.videos.length == 0"
+            [innerHtml]="trendres.yvideos[0].path"></div>
+        <h3 *ngIf="trendres.page != null"><a [routerLink]="['/mypagedetails',trendres.page_id]">by {{trendres.page.name}}</a>
+        </h3>
+        <p><a [routerLink]="['/postdetails',trendres.id]">{{trendres.title}}..</a> </p>
+    </li>
+</ul>
+</div>
+
+<div class="footer-links">
+    <a [routerLink]="['/aboutus']">About Us</a> |
+    <a [routerLink]="['/privacyandpolicy']">Privacy Policy</a> |
+    <a [routerLink]="['/termsandcondition']">Terms & Conditions</a> |
+    <a [routerLink]="['/packages']">Packages</a> 
+</div>
+<div class="footer-copyright">2019 &copy; Watnew. All Rights Reserved.</div>
+<div class="play-store-icons">
+    <a href="https://play.google.com/store/apps/details?id=com.m.watnew&hl=en" target="_blank"><img src="assets/images/googleplay-icon.png" alt="Google Paly" /></a>
+    <a title="Coming Soon"><img src="assets/images/appstore-icon.png" alt="App Store" /></a>
+</div>

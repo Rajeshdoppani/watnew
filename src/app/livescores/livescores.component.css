@@ -1,0 +1,33 @@
+.load_more {
+    background: #005abf;
+    border: 1px solid #005abf;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 30px;
+}
+.loadMore{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.index-isotope.v3 article.pluto-post-box .post-title{padding-bottom: 20px;}
+
+.active {
+    display: block !important;
+}
+
+.change_state{
+    /* margin: 0 15px 0 0; */
+    background: #f3155b;
+    border: 1px solid #f3155b;
+    border-radius: 30px;
+    padding: 7px 15px;
+    float: right;
+    color: #fff;
+    font-size: 15px;
+    text-transform: capitalize;
+    box-shadow: none;
+    animation: 0.4s cubic-bezier(.25, 1.1, .5, 1.2) 0.6s showFeaturedHeading;
+    animation-fill-mode: both;
+    font-family: 'akkurat_lightregular';
+    font-weight: normal;
+}

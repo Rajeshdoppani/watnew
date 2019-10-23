@@ -1,0 +1,61 @@
+<navbar></navbar>
+<div class="main-content-w">
+  <div class="main-content-m">
+    <div class="main-content-i">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-9 col-md-9 wt-left" id="container">
+            <div class="content reading-mode-content side-padded-content">
+              <div class="top-sidebar-wrapper">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigs">
+                  <aside ngxSlickItem id="media_image-4"
+                    class="widget-odd widget-last widget-first widget-1 widget widget_media_image"
+                    *ngFor="let bannerdata of Bannerdata"><a href="{{bannerdata.url}}"><img width="898" height="117"
+                        src="{{bannerdata.bannerimages[0].path}}" class="image wp-image-1831  attachment-full size-full"
+                        alt="" style="max-width: 100%; height: auto;"></a></aside>
+                </ngx-slick-carousel>
+              </div>
+              <article id="page-74" class="pluto-page-box post-74 page type-page status-publish hentry">
+                <div class="post-body">
+                  <!-- <div class="single-post-top-features">
+             <div class="single-post-top-share">
+                <i class="fa os-icon-plus share-activator"></i>
+                <span class="caption share-activator">Share this post</span>
+                <div class="os_social-head-w"><div class="os_social"><a class="os_social_twitter_share" href="http://twitter.com/share?url=http://pluto.pinsupreme.com/contact-us/&amp;text=Contact+Us" target="_blank"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/twitter.png" title="Twitter" class="os_social" alt="Tweet about this on Twitter"></a><a class="os_social_pinterest_share" data-pin-custom="true" target="_blank" data-pin-log="button_pinit" data-pin-href="https://www.pinterest.com/pin/create/button?guid=fDLxG_sdfDGv-1&amp;url=http%3A%2F%2Fpluto.pinsupreme.com%2Fcontact-us%2F&amp;media=&amp;description=Contact%2BUs"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/pinterest.png" title="Pinterest" class="os_social" alt="Pin on Pinterest"></a><a class="os_social_linkedin_share" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://pluto.pinsupreme.com/contact-us/" target="_blank"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/linkedin.png" title="Linkedin" class="os_social" alt="Share on LinkedIn"></a><a class="os_social_google_share" href="https://plus.google.com/share?url=http://pluto.pinsupreme.com/contact-us/" target="_blank"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/google.png" title="Google+" class="os_social" alt="Share on Google+"></a><a class="os_social_email_share" href="mailto:?Subject=Contact+Us&amp;Body=%20http://pluto.pinsupreme.com/contact-us/"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/email.png" title="Email" class="os_social" alt="Email this to someone"></a><a class="os_social_facebook_share" href="http://www.facebook.com/sharer.php?u=http://pluto.pinsupreme.com/contact-us/" target="_blank"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/facebook.png" title="Facebook" class="os_social" alt="Share on Facebook"></a><a class="os_social_vk_share" href="http://vkontakte.ru/share.php?url=http://pluto.pinsupreme.com/contact-us/" target="_blank"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/vkontakte.png" title="Vkontakte" class="os_social" alt="Share on Vkontakte"></a><a class="os_social_ok_share" href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&amp;st._surl=http://pluto.pinsupreme.com/contact-us/" target="_blank"><img src="http://pluto.pinsupreme.com/wp-content/themes/pluto-by-osetin/assets/images/socialicons/ok.png" title="Odnoklassniki" class="os_social" alt="Share on Odnoklassniki"></a></div></div>
+              </div>
+
+            </div> -->
+                  <h1 class="page-title">Abusereport</h1>
+
+                  <div class="post-content enquiry-form-sec">
+                    <h2>Reason to Report or Block ?</h2>
+                    <p>Submit a reason to report this post or else <br>you can block this post</p>
+                    <form action="" method="post" name="AbuseForm" #AbuseForm="ngForm" novalidate>
+                      <select class="form-control" name="reason" #reason="ngModel" [(ngModel)]="abuseInfo.reason"
+                        required>
+                        <option value="">Select a reason</option>
+                        <option [ngValue]="abusereason.reason+'-'+abusereason.id"
+                          *ngFor="let abusereason of abusereasondata">
+                          {{abusereason.reason}}</option>
+                      </select>
+                      <textarea class="form-control" name="message" #message="ngModel"
+                        [(ngModel)]="abuseInfo.message"></textarea>
+
+                      <button type="submit" class="btn btn-default report-but" [disabled]="!AbuseForm.valid"
+                        (click)="abuseReport(abuseInfo)">Report</button>
+                    </form>
+
+
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+            <rightsidebar></rightsidebar>
+          </div>
+
+
+        </div>
+        <footer></footer>
+      </div>

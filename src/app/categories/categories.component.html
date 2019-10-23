@@ -1,0 +1,112 @@
+<div class="onboarding-manager">
+    <div class="tile-manager">
+        <div data-subview="tiles[]" class="clearfix">
+            <!--<div data-subview="cta-tile">
+                <div class="onboarding-tile onboarding-tile--cta" style="opacity: 1; display: block; transform: translateY(0px);">
+                    <div class="onboarding-tile--cta-header">Choose your interests?</div>
+                    <div class="onboarding-tile--cta-subheader">Tell us what you like and we'll get you the good stuff.</div>
+                </div>
+            </div>-->
+            <div class="onboarding-tile onboarding-tile--large" data-subview="tiles"
+                style="opacity: 1; display: block; transform: translateY(0px);"
+                *ngFor="let cat of categoryList; let j of cat.subcategories">
+                <div class="tile-inner" id="check_{{cat.id}}" data-name="technology"
+                    (click)="categorySelect(j,cat.id,cat.category_name)">
+                    <div class="block-lg all-blocks that-big-blog-blocker">
+                        <div class="sub-block-parent add-bigger-block-information-here">
+                            <a class="link-shrink">
+                                <div class="block-image" [ngStyle]="{ 'background-image': 'url(' + cat.image + ')'}">
+                                </div>
+                                <div class="block-vignette"></div>
+                                <div class="check-mark" id="maincheck_{{cat.id}}"></div>
+                                <div class="block-title-container">
+                                    <h3 class="block-title-text">{{cat.category_name}}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div data-subview="subtiles[]">
+                    <ng-container *ngFor="let subcat of cat.subcategories; let i = index;">
+                        <div class="onboarding-tile onboarding-tile--small sub{{subcat.category_id}} more{{subcat.id}}"
+                            data-subview="subtiles"
+                            (click)="subcatClick(subcat.id,subcat.category_name,subcat.category_id)"  [ngClass]="{'morehide': i > 3}">
+                            <div class="tile-inner" data-name="futurism">
+                                <div class="block-lg all-blocks that-big-blog-blocker">
+                                    <div class="sub-block-parent add-bigger-block-information-here">
+                                        <a class="link-shrink">
+                                            <div class="block-image"
+                                                [ngStyle]="{ 'background-image': 'url(' + subcat.image + ')'}"></div>
+                                            <div class="block-vignette"></div>
+                                            <div class="check-mark" id="subcheck_{{subcat.id}}"></div>
+                                            <div class="block-title-container">
+                                                <h3 class="block-title-text">{{subcat.category_name}}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="more sub{{subcat.category_id}}" style="display:none;"
+                            *ngIf="cat.subcategories.length != 4 && i === 3 && i != 0"
+                            (click)="moreClick(cat.subcategories)">More <i class="fa fa-angle-right"></i></div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-pill-container">
+        <div class="pill-manager-container">
+            <!--<div class="pill-manager" data-subview="pillManager">
+                <div class="pill-shell filled" *ngFor="let catname of allcat" (click)="removeCat(catname.maincategory_id,catname.subcategory_id,catname.category_name)">
+                    <div class="pill-outer tagPill">
+                        <div class="pill">
+                            <div class="sub-pill" style="background: #66a8cf"><span class="tag-name">{{catname.category_name}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bar-fade"></div>-->
+            <h1>Choose your interests?</h1>
+            <!--<h2>Tell us what you like and we'll get you the good stuff.</h2>-->
+            <div class="onboarding-progress">
+                <div class="onboarding-progress-button" data-js-onboarding-progress-action=""
+                    style="transform: scaleX(1) scaleY(1);">
+                    <div class="progress-text" [ngClass]="subcat.length==0 ? 'disabled' : 'enabled'"
+                        (click)="subcat.length!=0 && finalCat(subcat)"><span class="next-button-container">Select</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row" #myDiv (click)="modalopen.open()">
+        <modal #modalopen class="modal-sm Mo-categories-popup">
+            <modal-header>
+                <h1>More Categories</h1>
+            </modal-header>
+            <modal-content>
+                <div class="onboarding-tile onboarding-tile--small sub{{subcat.category_id}} more{{subcat.category_id}} catshow" data-subview="subtiles" *ngFor="let subcat of morecat; let i = index;"
+                    (click)="subcatClick(subcat.id,subcat.category_name,subcat.category_id)">
+                    <div class="tile-inner" data-name="futurism">
+                        <div class="block-lg all-blocks that-big-blog-blocker">
+                            <div class="sub-block-parent add-bigger-block-information-here">
+                                <a class="link-shrink">
+                                    <div class="block-image" [ngStyle]="{ 'background-image': 'url(' + subcat.image + ')'}">
+                                    </div>
+                                    <div class="block-vignette"></div>
+                                    <div class="check-mark" id="subcheck_{{subcat.id}}"></div>
+                                    <div class="block-title-container">
+                                        <h3 class="block-title-text">{{subcat.category_name}}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </modal-content>
+        </modal>
+    </div>

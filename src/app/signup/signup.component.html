@@ -1,0 +1,237 @@
+<!-- <navbar></navbar> -->
+<div class="main-content-w m-t-none">
+  <div class="main-content-m">
+    <div class="main-content-i fullscreen_post_bg signup-sec">
+      <!-- <div class="content padded-top padded-bottom" style="display: none;">
+        <div id="page-435" class="post-435 page type-page status-publish hentry">
+          <div class="post-content"><a href="#" class="userpro-close-popup">Close</a>
+            <div class="userpro userpro-336 userpro-float">
+
+              <div class="userpro-head">
+
+                <div class="userpro-left">Register an Account</div>
+                <div class="userpro-right"><a [routerLink]="['/login']" data-template="login">Already a member?</a>
+                </div>
+                <div class="userpro-clear"></div>
+              </div>
+
+              <div class="userpro-body">
+
+                <form action="" method="post" name="RegForm" #RegForm="ngForm" novalidate>
+
+                  <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="reg_nickname">Nick Name</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i
+                          class="userpro-icon-user"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="reg_nickname" id="reg_nickname"
+                        placeholder="Nick Name" [(ngModel)]="regInfo.reg_nickname" #reg_nickname="ngModel" required>
+                      <span class="err-msg">
+                        <div *ngIf="reg_nickname.touched">
+                          <div *ngIf="reg_nickname.errors?.required">
+                            Nick Name is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div>
+
+                  <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="reg_email"> Mobile</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i
+                          class="fa fa-envelope"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="reg_email" id="reg_email" placeholder=" Mobile"
+                        [(ngModel)]="regInfo.reg_email" #reg_email="ngModel"
+                        onkeypress="return (event.charCode > 47&& event.charCode < 58)"
+                        (keyup)="onKeyUp($event,regInfo.reg_email)" maxlength="10">
+                      <p class="mobilefield-sec"><span *ngIf="err_show">{{message}}</span></p>
+                      <span class="err-msg">
+                        <div *ngIf="reg_email.touched">
+                          <div *ngIf="reg_email.errors?.required">
+                            Mobile is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div>
+                  <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="reg_password">Password</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i
+                          class="userpro-icon-lock"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="password" name="reg_password" id="reg_password"
+                        placeholder="Password" [(ngModel)]="regInfo.reg_password" #reg_password="ngModel" required>
+                      <span class="err-msg">
+                        <div *ngIf="reg_password.touched">
+                          <div *ngIf="reg_password.errors?.required">
+                            Password is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div>
+                  <div class="userpro-clear"></div>
+                 <div class="userpro-column">
+                  <div class="userpro-field userpro-field-compact">
+                      <div class="userpro-input">
+
+                          <div class='userpro-checkbox-wrap'>
+                              <label class='userpro-checkbox hide-field'>
+                                  <span class="remcheck"></span>
+                                  <input type='checkbox' name='rememberme' id='agr'
+                                     />I agree the terms and conditions</label>
+
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+                  <div class="userpro-field userpro-submit userpro-column">
+
+                    <input type="submit" value="Register" class="userpro-button" [disabled]="!RegForm.valid"
+                      (click)="UserRegister(regInfo)">
+                  </div>
+                  <p class="signup-error">{{signmessage}}</p>
+                </form>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="limiter">
+        <div class="container-login100" style="background-image: url('assets/images/signup-bg.jpg');">
+          <div class="wrap-login100">
+            <form action="" method="post" name="RegForm" #RegForm="ngForm" novalidate
+              class="login100-form validate-form">
+              <span class="login100-form-logo">
+                <a routerLink="/home"><img src="assets/images/login-logo-img.jpg" alt="logo"></a>
+              </span>
+
+              <span class="login100-form-title p-b-34 p-t-27">
+                Register an Account
+              </span>
+
+              <div class="wrap-input100 validate-input" data-validate="Enter Nick Name">
+                <input class="input100" type="text" name="reg_nickname" id="reg_nickname" placeholder="Nick Name"
+                  [(ngModel)]="regInfo.reg_nickname" #reg_nickname="ngModel" required>
+                <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                <span class="err-msg">
+                  <div *ngIf="reg_nickname.touched">
+                    <div *ngIf="reg_nickname.errors?.required">
+                      Nick Name is required
+                    </div>
+                  </div>
+                </span>
+              </div>
+
+              <div class="wrap-input100 validate-input" data-validate="Enter Mobile">
+                <input class="input100" type="text" name="reg_email" id="reg_email" placeholder=" Mobile"
+                  [(ngModel)]="regInfo.reg_email" #reg_email="ngModel"
+                  onkeypress="return (event.charCode > 47&& event.charCode < 58)"
+                  (keyup)="onKeyUp($event,regInfo.reg_email)" maxlength="10" required>
+
+                <span class="focus-input100" data-placeholder="&#xF188;"></span>
+                <span class="err-msg">
+                  <div *ngIf="reg_email.touched">
+                    <div *ngIf="reg_email.errors?.required">
+                      Mobile is required
+                    </div>
+                  </div>
+                </span>
+                <p class="mobilefield-sec"><span *ngIf="err_show">{{message}}</span></p>
+              </div>
+
+              <div class="wrap-input100 validate-input" data-validate="Enter password">
+
+                <input class="input100" type="password" name="reg_password" id="reg_password" placeholder="Password"
+                  [(ngModel)]="regInfo.reg_password" #reg_password="ngModel" required>
+                <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                <span class="err-msg">
+                  <div *ngIf="reg_password.touched">
+                    <div *ngIf="reg_password.errors?.required">
+                      Password is required
+                    </div>
+                  </div>
+                </span>
+              </div>
+
+
+              <div class="contact100-form-checkbox">
+                <input class="input-checkbox100" id="agr" ame='rememberme' type="checkbox" name="rememberme"
+                  [(ngModel)]="regInfo.rememberme" #rememberme="ngModel" required>
+                <label class="label-checkbox100" for="agr">
+                  <a href="/termsandcondition" target="_blank"> I agree the terms and conditions</a>
+                </label>
+              </div>
+
+              <p class="signup-error">{{signmessage}}</p>
+              <div class="container-login100-form-btn">
+
+
+                <input type="submit" value="Register" class="login100-form-btn" [disabled]="!RegForm.valid"
+                  (click)="UserRegister(regInfo)">
+              </div>
+
+              <div class="text-center p-t-90">
+                <!-- <a class="txt1" href="#">
+                  Forgot Password?
+                </a> -->
+                <a class="txt1" [routerLink]="['/login']" data-template="login">Already a member?</a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--<div class="primary-sidebar-wrapper">
+<rightsidebar></rightsidebar>
+  </div>-->
+  </div>
+
+</div>
+<div class="row otp-sec forget-otp" #myDiv (click)="modalopen.open()">
+  <modal #modalopen class="modal-sm">
+    <modal-header>
+      <h1>Verify OTP</h1>
+    </modal-header>
+    <modal-content>
+      <div id="countdown_signup" *ngIf="verifyotpdefault">
+        <div id="countdown-number_signup"></div>
+        <svg>
+          <circle r="44" cx="47" cy="52"></circle>
+        </svg>
+      </div>
+      <div id="countdown_resend" *ngIf="resendotp">
+        <div id="countdown-number_resend"></div>
+        <svg>
+          <circle r="44" cx="47" cy="52"></circle>
+        </svg>
+      </div>
+      <h2>We have sent a verification code to the registered mobile number</h2>
+      <div class="confirmation_code_group">
+        <div class="confirmation_code split_input large_bottom_margin" data-multi-input-code="true">
+          <div class="split_input_item input_wrapper"><input type="text" name="otpNumber" class="inline_input"
+              maxlength="6" [(ngModel)]="otp.otpNumber" #otpNumber="ngModel"></div>
+        </div>
+        <button class="btn btn-verify" [disabled]="otp.otpNumber.length != 6" (click)="verifyotp(otp)">Verify</button>
+        <h3><a style="cursor:pointer" (click)="resendOtp()">Resend OTP</a></h3>
+      </div>
+      <p class="invalid-otp">{{otpmessage}}</p>
+    </modal-content>
+
+  </modal>
+</div>

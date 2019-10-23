@@ -1,0 +1,70 @@
+.post-body{overflow: hidden;}
+.enquiry-form-sec{width: 100%; /*margin: 0 auto;*/}
+.form-control{padding: 10px 15px; height: auto;}
+.enquiry-form-sec .userpro-field-icon{background: #537eff; padding: 5px 11px; border-radius: 50%; margin: 0 3px 0 0;}
+.enquiry-form-sec .userpro-field-icon i{color: #fff;}
+.enquiry-form-sec label{font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; margin-bottom: 10px;}
+.email-sec .userpro-field-icon{padding: 5px 8px;}
+.phone-sec .userpro-field-icon{padding: 5px 12px;}
+.comment-sec .userpro-field-icon{padding: 5px 9px;}
+.userpro-icon-mobile-phone{font-size: 21px; line-height: 14px; position: relative; top: 2px;}
+textarea.form-control{resize: none;}
+.form-group {margin-bottom: 20px; width: 48%; float: left; margin: 0 0em 1em 0;}
+.email-sec{margin-left: 2em;}
+.comment-sec{width: 100%;}
+.submit-but{border:none; background-position: bottom;
+background: linear-gradient(to bottom, #00356f 50%,#fff 50%) no-repeat scroll bottom right / 100% 212% #00356f;
+transition: all 200ms ease; margin:0 0; padding: 0.7em 2.5em; font-size: 16px;
+font-weight: 600; font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 30px; color:#00356f; border: 1px solid #00356f; float: right;}
+.submit-but:hover, .submit-but.active {background-position: top; color: #ffffff;}
+
+.page h1.page-title{padding-bottom: 10px; margin-bottom: 10px;}
+
+button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-block}progress,sub,sup{vertical-align:baseline}html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0} menu,article,aside,details,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{}button,select{text-transform:none}[type=submit], [type=reset],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}/*# sourceMappingURL=normalize.min.css.map */
+.checkmark {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; margin: 0 auto 2em;
+  }
+  
+  .checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  
+  .checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+  
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes scale {
+    0%, 100% {
+      transform: none;
+    }
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+  @keyframes fill {
+    100% {
+      box-shadow: inset 0px 0px 0px 40px #7ac142;
+    }
+  }

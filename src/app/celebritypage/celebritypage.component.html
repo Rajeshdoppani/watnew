@@ -1,0 +1,94 @@
+<navbar></navbar>
+<div class="main-content-w pagesContent" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
+  <div class="main-content-m">
+    <div class="main-content-i">
+
+      <div class="content side-padded-content reading-mode-content p-none">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 wt-left">
+              <header class="search-results-header">
+                <h3>Celebrity</h3>
+              </header>
+              <div class="pages-sec">
+                <div class="pages-categories-sec">
+                  <div>
+                    <div class="pages-search">
+                      <form method="get" class="search-form" action="#" autocomplete="off">
+                        <div class="search-field-w">
+                          <input type="text" class="search-field" [(ngModel)]="serach.pagename" #pagename="ngModel"
+                            name="pagename" title="Search for:" placeholder="Search" (keyup)="onKeyUp(serach.pagename)">
+                          <input type="submit" class="search-submit" value="Search" />
+                        </div>
+                      </form>
+
+
+                    </div>
+                    <button class="change_cat" (click)="changeCat()">Change Celebrity</button>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let cat of celebritydata;let i= index">
+                  <div class="page-title-img"><img alt="" class="img-circle" src="{{cat.page_icon}}"></div>
+                  <div class="card left-page-det">
+                    <div class="card-body">
+                      <h5><a [routerLink]="['/mypagedetails',cat.id]">{{cat.name}}</a></h5>
+                      <div class="h7"><span><i class="fa fa-map-marker"></i> {{cat.city}}, {{cat.country}}</span></div>
+                      <div class="h7">
+                        <span><i class="fa fa-calendar"></i> {{cat.created_at}}</span>
+                      </div>
+                      <div class="h7"> <span *ngIf="cat.follow.length == 0 ? false : true">{{cat.follow_count}}
+                          Followers</span></div>
+                      <button class="btn followers-but celebrityfollow{{i}}" id="follow_up{{i}}"
+                        (click)="following(cat,i)">{{getPageFollowStatus(cat,i)}}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+              <rightsidebar></rightsidebar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <i class="fa fa-spinner fa-spin loadSpinner" style="display:none;"></i>
+  <h2 *ngIf="message" style="color:#fff;text-align: center;font-size: 14px;">{{message}}</h2>
+</div>
+
+<div class="row otp-sec new-popup celebrity-pop" #selectcelebritycat (click)="modalopen.open()">
+  <modal #modalopen>
+    <modal-header>
+      <h1>Select Celebrities</h1>
+    </modal-header>
+    <modal-content>
+      <div class="form-group ">
+        <!-- <select id="dates-field2" class="multiselect-ui form-control" name="catval" [(ngModel)]="selectinfo.catval"
+          #catval="ngModel" multiple="multiple">
+          <option *ngFor="let clist of celebritycatlist" value="{{clist.id}}" [selected]="clist.id == clist.catselect">{{clist.category_name}}</option>
+        </select> -->
+        <ul class="right-follow-sec">
+          <li *ngFor="let clist of celebritycatlist">
+            <div class="rf-th"><img _ngcontent-c1="" class="twPc-avatarImg"
+                onError="this.src='assets/images/noimage.jpg'" [src]="clist.image"></div>
+            <h3><input class="form-check-input" name="{{clist.id}}" type="checkbox" id="{{clist.id}}"
+                [checked]="clist.id == clist.catselect" (change)="onChangeCategory(clist, $event)">
+              {{clist.category_name}}</h3>
+
+          </li>
+        </ul>
+        <!-- <input class="form-check-input" name="{{clist.id}}" type="checkbox" id="{{clist.id}}"
+            [checked]="clist.id == clist.catselect" (change)="onChangeCategory(clist, $event)">
+          <label class="form-check-label" for="{{clist.id}}">
+            {{clist.category_name}}
+          </label> -->
+      </div>
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" [disabled]="checkcats == 'false'"
+        (click)="modalopen.close();fetchcontent()">Continue</button>
+    </modal-footer>
+  </modal>
+</div>

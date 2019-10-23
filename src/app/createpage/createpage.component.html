@@ -1,0 +1,164 @@
+<navbar></navbar>
+<div class="main-content-w">
+  <div class="main-content-m">
+    <div class="main-content-i fullscreen_post_bg">
+      <div class="content padded-top padded-bottom">
+        <div id="page-435" class="post-435 page type-page status-publish hentry create-page-sec">
+          <div class="post-content"><a href="#" class="userpro-close-popup">Close</a>
+            <div class="userpro  userpro-float createpage-sec">
+
+              <div class="userpro-head">
+                <div class="userpro-left">Create Page</div>
+
+                <div class="userpro-clear"></div>
+              </div>
+
+              <div class="userpro-body">
+                <p>Give your business or cause a voice on watnew and connect with the users who matter to you.</p>
+                <form action="" method="post" name="pageForm" #pageForm="ngForm" novalidate>
+
+                  <div class='userpro-field  userpro-field-username_or_email '>
+                    <div class='userpro-label iconed'>
+                      <label>Page Title</label>
+                      <div class='required'>*</div><span class="userpro-field-icon"><i
+                          class="userpro-icon-user"></i></span>
+                    </div>
+                    <div class='userpro-input'>
+                      <input name="name" type="text" class="form-control " id="title" placeholder="Page title"
+                        [(ngModel)]="pageInfo.name" #name="ngModel">
+                      <span class="err-msg">
+                        <div *ngIf="name.touched" class="help-block">
+                          <div *ngIf="name.errors?.required" class="help-block">
+                            Page Title is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class='userpro-clear'></div>
+                    </div>
+                  </div>
+                  <div class='userpro-clear'></div>
+
+                  <div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+                    <div class='userpro-label iconed'>
+                      <label>Page Icon</label>
+                      <div class='required'>*</div><span class="userpro-field-icon"><i
+                          class="userpro-icon-camera"></i></span>
+                    </div>
+
+                    <div class="userpro-input">
+                      <div class="userpro-pic userpro-pic-profilepicture" data-remove_text="Remove">
+                        <!-- <img alt="" src="assets/img/none.png" class="avatar avatar-64 photo avatar-default" height="64"
+                          width="64"> -->
+                      </div>
+                      <!-- <div class="userpro-pic-upload ajax-file-upload" data-filetype="picture"
+                        data-allowed_extensions="png,gif,jpg,jpeg">Upload
+                        a profile picture</div><input type="file" name="page_icon" id="file"
+                        (change)="handleFileInput($event.target.files)">-->
+
+                      <p><span class="btn btn-default btn-file">
+                          Upload a Page Icon <input type="file" name="page_icon" id="file"
+                            (change)="handleFileInput($event.target.files)" required>
+                        </span> {{pageIconName}}</p>
+
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class='userpro-clear'></div>
+
+                  <div class='userpro-field  userpro-field-username_or_email '>
+                    <div class='userpro-label iconed'>
+                      <label>About Page</label>
+                      <span class="userpro-field-icon"><i class="userpro-icon-user"></i></span></div>
+                    <div class='userpro-input'>
+                      <textarea name="about" type="text" class="form-control valid" id="pageabout"
+                        placeholder="About Page" aria-invalid="false" [(ngModel)]="pageInfo.about"
+                        #about="ngModel"></textarea>
+                      <span class="err-msg">
+                        <div *ngIf="about.touched" class="help-block">
+                          <div *ngIf="about.errors?.required" class="help-block">
+                            About is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class='userpro-clear'></div>
+                    </div>
+                  </div>
+                  <div class='userpro-clear'></div>
+
+                  <div class='userpro-field  userpro-field-username_or_email '>
+                    <div class='userpro-label iconed'>
+                      <label>Category</label><span class="userpro-field-icon"><i class="fa fa-list-alt"></i></span>
+                    </div>
+                    <div class='userpro-input createpage-categories'>
+                      Selected Categories: {{checkedKeys}}
+                      <kendo-treeview [nodes]="CatTree" textField="category_name"
+                        [kendoTreeViewCheckable]="{ mode: 'single' }" kendoTreeViewExpandable
+                        kendoTreeViewHierarchyBinding childrenField="items" [(checkedKeys)]="checkedKeys"
+                        [checkBy]="key" [isChecked]="isChecked">
+                      </kendo-treeview>
+                    </div>
+                  </div>
+                  <div class='userpro-clear'></div>
+
+                  <div class='userpro-field  userpro-field-user_pass ' data-key='user_pass'>
+                    <div class='userpro-label iconed'>
+                      <label>Upload cover photo</label>
+                      <span class="userpro-field-icon"><i class="userpro-icon-camera"></i></span>
+                    </div>
+                    <div class="userpro-input">
+                      <!-- <div class="userpro-pic-upload ajax-file-upload" data-filetype="picture"
+                        data-allowed_extensions="png,gif,jpg,jpeg">Upload
+                        a cover photo</div><input type="file" name="page_header" id="file"
+                        (change)="pageHeaderFileInput($event.target.files)">-->
+                      <p><span class="btn btn-default btn-file">
+                          Upload a cover photo <input type="file" name="page_header" id="file"
+                            (change)="pageHeaderFileInput($event.target.files)">
+                        </span> {{pageheader}}</p>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class='userpro-clear'></div>
+
+
+                  <div class="userpro-field userpro-submit userpro-column">
+                    <div class="userpro-clear"></div>
+                    <input type="submit" value="Submit" [disabled]="!pageForm.valid" (click)="AddPage(pageInfo)"
+                      class="userpro-button" />
+
+                    <input type="button" value="Cancel" class="userpro-button secondary" data-template="register" />
+
+                    <img src="assets/images/loading.gif" alt="" class="userpro-loading" />
+                    <div class="userpro-clear"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script type="text/javascript">
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#blah').attr('src', e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script> -->
+<div class="row  otp-sec" #addPage (click)="modalopen.open()">
+  <modal #modalopen>
+    <modal-content>
+      {{message}}
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" (click)="modalopen.close()">okay!</button>
+    </modal-footer>
+  </modal>
+</div>

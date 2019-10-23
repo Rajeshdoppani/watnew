@@ -1,0 +1,47 @@
+<navbar></navbar>
+<div class="main-content-w pagesaContent">
+  <div class="main-content-m">
+    <div class="main-content-i">
+      
+      <div class="content side-padded-content reading-mode-content p-none">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 wt-left">
+                <header class="search-results-header">
+                    <h3>Following</h3>
+                  </header>
+              <div class="pages-sec">
+                <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let cat of myfollowarry;let i= index">
+                  <div class="page-title-img"><img alt="" class="img-circle"
+                      onError="this.src='assets/images/noimage.jpg'" [src]="cat.page.page_icon"></div>
+                  <div class="card left-page-det">
+                    <div class="card-body">
+                      <h5>{{cat.page.name}}</h5>
+                      <div class="h7"></div>
+                      <div class="h7 mypage-date"><i class="fa fa-map-marker"></i> {{cat.page.city}},
+                        {{cat.page.country}}
+                      </div>
+                      <div class="h7 mypage-date"><i class="fa fa-calendar"></i> {{cat.created_at}}</div>
+
+                      <!-- <button class="btn followers-but"(click)="following(cat,i)" *ngIf="cat.follow.length == 0">Follow</button> -->
+                      <button class="btn followers-but " (click)="following(cat,i)">Following</button>
+                    </div>
+                  </div>
+                </div>
+                <p style="color:#fff;text-align: center;font-size: 14px;" *ngIf="alertnodata">
+                  {{alertmessage}}<b>{{catrgory_name}}</b></p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+                <rightsidebar></rightsidebar>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="loadMore" style="display: none;">
+      <button (click)="fetchNextfollowing()" class="load_more">Load More</button>
+    </div>
+    <h2 *ngIf="message" style="color:#fff;text-align: center;font-size: 14px;">{{message}}</h2>
+</div>

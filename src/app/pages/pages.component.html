@@ -1,0 +1,76 @@
+<navbar></navbar>
+
+<div class="main-content-w pagesContent" infinite-scroll [infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+  <div class="main-content-m" >
+    <div class="main-content-i">
+      <div class="content side-padded-content reading-mode-content p-none">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 wt-left">
+              <div class="pages-sec">
+                <div class="pages-categories-sec">
+                  <div>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label>Categories</label>
+                        <select class="form-control" (change)="getpagesforcat($event.target.value)">
+                          <option value="" [selected]=true [disabled]="true">Categories</option>
+                          <option *ngFor="let maincat of categoryList" value={{maincat.id}}>{{maincat.category_name}}
+                          </option>
+
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail2">Subcategories</label>
+                        <select class="form-control" (change)="getpagesubforcat($event)">
+                          <option value="" [selected]=true [disabled]="true">Select </option>
+                          <option *ngFor="let subcat of subMenuData" value={{subcat.id}}>{{subcat.category_name}}
+                          </option>
+
+                        </select>
+                      </div>
+                    </form>
+
+                    <div class="pages-search">
+                      <form method="get" class="search-form" action="#" autocomplete="off">
+                        <div class="search-field-w">
+                          <!-- <input type="search" autocomplete="off" class="search-field" 
+                              value="" name="keyword" 
+                               /> -->
+                          <input type="text" class="search-field" [(ngModel)]="serach.pagename" #pagename="ngModel"
+                            name="pagename" title="Search for:" placeholder="Search" (keyup)="onKeyUp(serach.pagename)">
+                          <input type="submit" class="search-submit" value="Search" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let cat of catpage;let i= index">
+                  <div class="page-title-img"><img alt="" class="img-circle"
+                      onError="this.src='assets/images/noimage.jpg'" [src]="cat.page_icon"></div>
+                  <div class="card left-page-det">
+                    <div class="card-body">
+                      <h5><a [routerLink]="['/mypagedetails',cat.id]">{{cat.name}}</a></h5>
+                      <div class="h7"><span><i class="fa fa-map-marker"></i> {{cat.city}}, {{cat.country}}</span></div>
+                      <div class="h7">
+                        <span><i class="fa fa-calendar"></i> {{cat.created_at}}</span>
+                      </div>
+                      <div class="h7"> <span *ngIf="cat.pagefollow_count == 0 ? false : true">{{cat.pagefollow_count}}
+                          Followers</span></div>
+                      <button class="btn followers-but pagesfollow{{i}}" id="follow_up{{i}}"
+                        (click)="following(cat,i)">{{getPageFollowStatus(cat,i)}}</button>
+                    </div>
+                  </div>
+                </div>
+                <p style="text-align: center;color:#fff;" *ngIf="alertnodata">{{alertmessage}}"<b>{{catrgory_name}}"</b></p>
+                <p style="text-align: center;color:#fff;" *ngIf="searchdata">{{searchdata}}</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+              <rightsidebar></rightsidebar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,99 @@
+<navbar></navbar>
+<div class="main-content-w">
+  <div class="main-content-m">
+    <div class="main-content-i">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-xs-12 col-sm-9 col-md-9 wt-left games-page">
+              <div class="top-sidebar-wrapper">
+                  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigs">
+                    <aside ngxSlickItem id="media_image-4"
+                      class="widget-odd widget-last widget-first widget-1 widget widget_media_image"
+                      *ngFor="let bannerdata of Bannerdata"><a href="{{bannerdata.url}}"><img width="898" height="117"
+                          src="{{bannerdata.bannerimages[0].path}}" class="image wp-image-1831  attachment-full size-full"
+                          alt="" style="max-width: 100%; height: auto;"></a></aside>
+                  </ngx-slick-carousel>
+                </div>
+            <header class="search-results-header">
+              <h3>Games</h3>
+            </header>
+            <div class="content side-padded-content">
+              <div id="primary-content" data-page-id="407" class="index-isotope hidden-on-load v3  "
+                data-layout-mode="masonry">
+                <ng-masonry-grid [masonryOptions]="{transitionDuration: '0.4s', horizontalOrder: true}"
+                  [useImagesLoaded]="true">
+                  <!-- Masonry Grid Item -->
+                  <ng-masonry-grid-item class="item-isotope" *ngFor="let games of Gamepagination">
+                    <article id="post-161"
+                      class="manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+                      <div class="post-body">
+                        <div class="post-media-body">
+                          <div class="figure-link-w">
+                            <figure class="abs-image">
+                              <img [src]="games.thumb3" onError="this.src='assets/images/gamestick.jpg'" width='100%'
+                                height='100%' (click)="openGame(games)">
+                              <h4 (click)="openGame(games)">{{games.name}}</h4>
+                            </figure>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </ng-masonry-grid-item>
+                </ng-masonry-grid>
+              </div>
+              <div class="loadMore">
+                <button *ngIf="limit < maxLength" class="load_more" (click)="showMoreImages()">Load More Games</button>
+              </div>
+              <h2 *ngIf="limit >= maxLength" style="text-align: center;color:#fff;font-size: 14px;">No More Games</h2>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+            <rightsidebar></rightsidebar>
+          </div>
+        </div>
+
+      </div><!-- Container End-->
+
+
+    </div>
+
+  </div>
+  <footer></footer>
+</div>
+
+<!-- 
+      <div class="games-sec">
+        <div class="row">
+          <div class="col-sm-12 col-md-4 col-lg-4" *ngFor="let games of Gamepagination">
+            <div class="games-list">
+              <img src="{{games.thumb3}}" width='100%' height='100%' (click)="openGame(games)">
+              <h4 (click)="openGame(games)">{{games.name}}</h4>
+            </div>
+          </div>
+        </div>
+        <button *ngIf="limit < maxLength" (click)="showMoreImages()">Load More Games</button>
+      </div>
+      <h2 *ngIf="limit >= maxLength" style="text-align: center;color:#fff;font-size: 14px;">No More Games</h2>
+    </div>
+    <div class="primary-sidebar-wrapper">
+      <rightsidebar></rightsidebar>
+    </div>
+  </div>
+  <footer></footer>
+</div> -->
+
+
+<div class="row otp-sec GamesSection" #GameOpen (click)="modalopen.open()">
+  <modal #modalopen class="modal-lg">
+    <modal-header>
+      <h1>{{Opendata.name}}</h1>
+    </modal-header>
+    <modal-content>
+      <div class="confirmation_code_group" [innerHtml]="Finalframe">
+
+      </div>
+    </modal-content>
+
+  </modal>
+</div>

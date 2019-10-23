@@ -1,0 +1,246 @@
+<navbar></navbar>
+<div class="main-content-w">
+  <div class="main-content-m">
+      <div class="limiter">
+          <div class="container-login100" style="background-image: url('assets/images/login-bg.jpg');">
+            <div class="wrap-login100">
+    <div class="main-content-i fullscreen_post_bg">
+      <div class="content ">
+        <div id="page-435" class="page type-page status-publish hentry">
+          <div class="post-content"><a href="#" class="userpro-close-popup">Close</a>
+            <div class="myprofile-sec">
+
+              <!-- <div class="userpro-head">
+
+                <div class="userpro-left">Profile Update</div>
+                <div class="userpro-right"></div>
+                <div class="userpro-clear"></div>
+              </div> -->
+
+              <div class="userpro-body">
+                <div class="profile">
+                  <div class="profile_pic">
+                    <img *ngIf="profile_picURL != ''" src="{{profile_picURL}}" alt="..." class="img-circle profile_img">
+                    <img *ngIf="profile_picURL == ''" src="assets/images/profile-img.jpg" alt="..."
+                      class="img-circle profile_img">
+                    <div class="availability-bubble online"></div>
+                  </div>
+                  <div class="profile_info">
+                    <!-- <span>Welcome,</span> -->
+                    <h2>{{profilenick_name}}</h2>
+                  </div>
+                </div>
+                <span _ngcontent-c6="" class="login100-form-title p-b-34 p-t-27"> Profile Update</span>
+                <form class="login100-form" action="" method="post" name="RegForm" #RegForm="ngForm" novalidate>
+                  <!--<div class="userpro-section userpro-column userpro-collapsible-1 userpro-collapsed-0"><span><i
+                        class="userpro-icon-angle-down"></i></span>Account
+                    Details</div>-->
+                  
+                    <div class="wrap-input100 validate-input" data-key="user_login" data-validate = "Username or E-mail">
+                        <input class="input100" type="text" name="nick_name" id="nick_name"
+                        placeholder="Nick Name" [(ngModel)]="regInfo.nick_name" #nick_name="ngModel" required>
+
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        <span class="err-msg">
+                            <div *ngIf="nick_name.touched">
+                              <div *ngIf="nick_name.errors?.required">
+                                Nick Name is required
+                              </div>
+                            </div>
+                          </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-key='user_login' data-validate = "Email">
+                        <input class="input100" type="text" name="email" id="email" placeholder="Email"
+                        [(ngModel)]="regInfo.email" #email="ngModel">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-key='user_login' data-validate = "Mobile">
+                      <input class="input100" type="text" name="mobile" id="mobile" placeholder="Mobile"
+                        [(ngModel)]="regInfo.mobile" #mobile="ngModel" required>
+                      <span class="focus-input100" data-placeholder="&#xF188;"></span>
+                      <span class="err-msg">
+                        <div *ngIf="mobile.touched">
+                          <div *ngIf="mobile.errors?.required">
+                            Mobile is required
+                          </div>
+                        </div>
+                      </span>
+                  </div>
+
+                  <div class="wrap-input100 validate-input" data-key='user_login' data-validate = "City">
+                    <input class="input100" type="text" name="city" [(ngModel)]="regInfo.city" #city="ngModel"
+                        name="city" id="city" placeholder="City">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    
+                </div>
+
+
+                  <!-- <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="nick_name">Nick Name</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i
+                          class="userpro-icon-user"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="nick_name" id="nick_name"
+                        placeholder="Nick Name" [(ngModel)]="regInfo.nick_name" #nick_name="ngModel" required>
+                      <span class="err-msg">
+                        <div *ngIf="nick_name.touched">
+                          <div *ngIf="nick_name.errors?.required">
+                            Nick Name is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div> -->
+
+                  <!-- <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="email">Email </label>
+                      <span class="userpro-field-icon"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="email" id="email" placeholder="Email"
+                        [(ngModel)]="regInfo.email" #email="ngModel"> -->
+                      <!-- <span *ngIf="err_show">{{message}}</span> -->
+                      <!-- <span class="err-msg">
+                        <div *ngIf="email.touched">
+                          <div *ngIf="email.errors?.required">
+                            Email is required
+                          </div>
+                        </div>
+                      </span> -->
+                      <!-- <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div> -->
+
+                  <!-- <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="mobile">Mobile</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i
+                          class="userpro-icon-lock"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="mobile" id="mobile" placeholder="Mobile"
+                        [(ngModel)]="regInfo.mobile" #mobile="ngModel" required>
+                      <span class="err-msg">
+                        <div *ngIf="mobile.touched">
+                          <div *ngIf="mobile.errors?.required">
+                            Mobile is required
+                          </div>
+                        </div>
+                      </span>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+
+                  <div class="userpro-clear"></div> -->
+
+
+                  <!-- <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="email">City </label>
+                       <div class="required">*</div>
+                      <span class="userpro-field-icon"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="city" [(ngModel)]="regInfo.city" #city="ngModel"
+                        name="city" id="city" placeholder="City">
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div> -->
+
+
+                  <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="email">Profile Pic </label>
+                      <div class="required">*</div>
+                      <!-- <span class="userpro-field-icon"><i
+                          class="fa fa-envelope"></i></span> -->
+                    </div>
+                    <div class="userpro-input">
+                      <p><span class="btn btn-default btn-file">
+                          Upload Pic <input type="file" name="images" id="file"
+                            (change)="profilepicInput($event.target.files)">
+                        </span>
+                        <span class="userpro-message">{{profilepic}}</span>
+                      </p>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div>
+                  <div class="userpro-clear"></div>
+
+
+                  <!-- <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="reg_mobile">Mobile Number</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i class="fa fa-phone"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="reg_mobile" id="reg_mobile" placeholder="Mobile Number"
+                        [(ngModel)]="regInfo.reg_mobile" #reg_mobile="ngModel" (keyup)="onKeyUp($event,regInfo.reg_mobile)" >
+                        <span *ngIf="err_show">{{message}}</span>
+                        <span class="err-msg">
+                          <div *ngIf="reg_mobile.touched">
+                              <div *ngIf="reg_mobile.errors?.required">
+                                  Mobile Number is required
+                              </div>
+                          </div>
+                      </span>
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div> -->
+                  <div class="userpro-clear"></div>
+
+
+
+
+                  <!-- <div class="userpro-field  userpro-field-user_login " data-key="user_login">
+                    <div class="userpro-label iconed"><label for="reg_referral">Referral Code</label>
+                      <div class="required">*</div><span class="userpro-field-icon"><i class="userpro-icon-user"></i></span>
+                    </div>
+                    <div class="userpro-input"><input type="text" name="reg_referral" id="user_login-336" placeholder="Referral Code"
+                        [(ngModel)]="regInfo.reg_referral" #reg_referral="ngModel">
+                      <div class="userpro-clear"></div>
+                    </div>
+                  </div> -->
+                  <div class="userpro-clear"></div>
+                  <div class="userpro-field userpro-submit userpro-column">
+                    <input type="submit" value="Update" class="userpro-button" (click)="Updateprofile(regInfo)"
+                      [disabled]="!RegForm.valid">
+
+                    <!-- <input type="button" value="Login" routerLink="/login" class="userpro-button secondary"> -->
+                  </div>
+
+                </form>
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!--<div class="primary-sidebar-wrapper">
+<rightsidebar></rightsidebar>
+  </div>-->
+  </div>
+  </div></div>
+  </div>
+</div>
+<div class="row otp-sec user-updated" #myDiv (click)="modalopen.open()">
+  <modal #modalopen class="modal-sm">
+    <modal-header>
+      <h1></h1>
+    </modal-header>
+    <modal-content>
+      
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path></svg>
+      
+      <h2>{{message}}</h2>
+
+    </modal-content>
+
+  </modal>
+</div>

@@ -1,0 +1,515 @@
+<navbar></navbar>
+<div class="main-content-w">
+    <div class="main-content-m">
+        <div class="main-content-i">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-9 col-md-9 wt-left" id="container">
+                        <div class="content side-padded-content reading-mode-content">
+                            <div class="top-sidebar-wrapper">
+                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+                                    [config]="slideConfigs">
+                                    <aside ngxSlickItem id="media_image-4"
+                                        class="widget-odd widget-last widget-first widget-1 widget widget_media_image"
+                                        *ngFor="let bannerdata of Bannerdata"><a href="{{bannerdata.url}}"><img
+                                                width="898" height="117" src="{{bannerdata.bannerimages[0].path}}"
+                                                class="image wp-image-1831  attachment-full size-full" alt=""
+                                                style="max-width: 100%; height: auto;"></a></aside>
+                                </ngx-slick-carousel>
+                            </div>
+
+                            <div class="sub-bar-w hidden-sm hidden-xs">
+                                <div class="sub-bar-i">
+                                    <a routerLink="/home" class="back-but"><i class="fa fa-angle-left"></i> Home</a>
+                                </div>
+                            </div>
+                            <article id="post-161"
+                                class="pluto-page-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+                                <div class="post-body p-bot-10">
+                                    <div class="single-post-top-features">
+                                        <div class="single-post-top-share">
+                                            <i
+                                                class="os-new-icon os-new-icon-share-2 share-activator-icon share-activator"></i>
+                                            <span class="share-activator-label share-activator caption">Share</span>
+                                            <div class="os_social-head-w">
+                                                <div class="os_social"><a class="os_social_twitter_share"
+                                                        href="https://twitter.com/share?url={{baseURL}}/share/{{pageid}}"
+                                                        target="_blank"><img src="assets/images/socialicons/twitter.png"
+                                                            title="Twitter" class="os_social"
+                                                            alt="Tweet about this on Twitter"></a><a
+                                                        class="os_social_google_share"
+                                                        href="https://plus.google.com/share?url={{baseURL}}/share/{{pageid}}"
+                                                        target="_blank"><img src="assets/images/socialicons/google.png"
+                                                            title="Google+" class="os_social"
+                                                            alt="Share on Google+"></a>
+                                                    <a class="os_social_email_share"
+                                                        href="mailto:?Subject=Post URL&amp;Body={{baseURL}}/share/{{pageid}}"><img
+                                                            src="assets/images/socialicons/email.png" title="Email"
+                                                            class="os_social" alt="Email this to someone"></a>
+                                                    <a class="os_social_facebook_share"
+                                                        href="http://www.facebook.com/sharer.php?u={{baseURL}}/share/{{pageid}}"
+                                                        target="_blank"><img
+                                                            src="assets/images/socialicons/facebook.png"
+                                                            title="Facebook" class="os_social"
+                                                            alt="Share on Facebook"></a>
+                                                    <!-- <a class="os_social_whatsapp_share"
+                                                        href="https://wa.me/?text={{baseURL}}/share/{{pageid}}"
+                                                        target="_blank"><img
+                                                            src="assets/images/socialicons/whatsapp.png"
+                                                            title="Whatsapp" class="os_social"
+                                                            alt="Share on Whatsapp"></a> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a *ngIf="myfav == '0'" (click)="Addfavourite()"
+                                            class="addfav single-post-top-reading-mode hidden-xs">
+                                            <i class="fa fa-star-o rotate" aria-hidden="true"></i>
+                                            <span>Add to Favorites</span>
+                                        </a>
+                                        <a *ngIf="showfavourite == 'true' || myfav == '1'" (click)="Addfavourite()"
+                                            class="addedfav single-post-top-reading-mode hidden-xs">
+                                            <i class="fa fa-star-o rotate" aria-hidden="true"></i>
+                                            <span>Added to Favorites</span>
+                                        </a>
+                                    </div>
+
+
+                                    <div class="post-media-body m-b-none">
+                                        <div class="figure-link-w">
+                                            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+                                                [config]="postConfigs">
+                                                <ng-container *ngIf="postimages && postVideoslength.length == '0'">
+                                                    <figure ngxSlickItem *ngFor="let contentimg of postimages"
+                                                        class="abs-image">
+                                                        <img width="100%" height="auto" src="{{contentimg.path}}"
+                                                            class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                                            alt="">
+                                                    </figure>
+                                                </ng-container>
+                                                <figure ngxSlickItem *ngIf="postyvideos" class="abs-image ytube"
+                                                    [innerHtml]="postyvideos">
+                                                </figure>
+                                                <figure ngxSlickItem *ngIf="postVideos" class="abs-image mpvideo">
+                                                    <video width="100%" height="auto" autoplay controls>
+                                                        <source src="{{postVideos}}" type="video/mp4">
+                                                    </video>
+                                                </figure>
+                                                <figure ngxSlickItem *ngIf="postVideosiframe"
+                                                    class="abs-image videosframe" [innerHtml]="postVideosiframe">
+                                                </figure>
+                                            </ngx-slick-carousel>
+                                        </div>
+                                        <div class="page-title">
+                                            <a title="{{page_name}}" [routerLink]="['/mypagedetails',page_ID]"
+                                                class="twPc-avatarLink">
+                                                <img src="{{page_icon}}" class="twPc-avatarImg">
+                                                <!-- <img alt="{{post.page.name}}" src="assets/images/tfn.png" class="twPc-avatarImg"> -->
+                                            </a>
+
+                                            <div class="post-meta-top entry-meta">
+                                                <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <div class="post-date">Posted on <time
+                                                                class="entry-date updated"
+                                                                datetime="2014-05-05T21:26:35+00:00"><b>{{feed_published_at}}</b></time>
+                                                        </div>
+                                                        <div class="post-author" *ngIf="pageCommentstatus == 'false'">by
+                                                            <strong class="author vcard"><a class="url fn n"
+                                                                    [routerLink]="['/mypagedetails',page_ID]">{{page_name}}</a></strong>
+                                                        </div>
+                                                        <div class="post-author" *ngIf="pageCommentstatus == 'true'">
+                                                            Courtesy
+                                                            by <strong class="author vcard"><a class="url fn n"
+                                                                    [routerLink]="['/mypagedetails',page_ID]">{{page_name}}</a></strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span class="views-icon" *ngIf="postviews_count != 0">
+                                                            Views :
+                                                            <span>{{postviews_count}}</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <h1 class="post-title entry-title post-det-tit" [innerHtml]="post_title"></h1>
+                                    <div class="post-content entry-content">
+                                        <p [innerHtml]="post_description"></p>
+                                    </div>
+
+                                    <div class="postdetails-com-abuse">
+                                        <div class="post-meta entry-meta">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-8 col-md-6">
+                                                    <div class="meta-like">
+                                                        <div class="meta-sec-links">
+                                                            <a class="heart_icon link-icon" (click)="postlike(postid)">
+                                                                <i class="fa fa-heart-o" id="heart_filled"></i>
+                                                                <span>{{postlikes_count}}</span>
+                                                            </a>
+                                                            <!--<a class="comment-icon">
+                                                                
+                                                                <svg class="comment-view"
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24">
+                                                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                                                    <path
+                                                                        d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+                                                                </svg>
+                                                                <span
+                                                                    *ngIf="postcomment_count != 0">{{postcomment_count}}</span>
+                                                            </a>-->
+                                                        </div>
+                                                        <span class="download-whatsapp">
+                                                            <a class="desktop_view"
+                                                                href="https://wa.me/?text={{baseURL}}/share/{{pageid}}"
+                                                                target='_blank'><i class="fa fa-whatsapp"></i></a>
+                                                            <a class="mobile_view"
+                                                                (click)="loadWhatsapp(pageid, post_single_title)"><i
+                                                                    class="fa fa-whatsapp"></i></a>
+                                                            <a
+                                                                (click)="mediaDownload(postData.images, postData.preview_image)"><svg
+                                                                    class="down-color"
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+                                                                    <path fill="none" d="M0 0h24v24H0z" /></svg></a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-8 col-md-6">
+                                                    <ul class="nav navbar-nav">
+                                                        <li class="dropdown">
+                                                            <a style="cursor: pointer;" class="dropdown-toggle"
+                                                                data-toggle="dropdown">
+                                                                <span class="fa fa-ellipsis-v pull-right"></span></a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a [routerLink]="['/abusereport',postid]">Abuse
+                                                                        Report</a>
+                                                                </li>
+
+                                                                <li><a [routerLink]="['/enquiry',postid]">Send an
+                                                                        Enquiry</a>
+                                                                </li>
+
+                                                                <li><a style="cursor: pointer;"
+                                                                        (click)="disablePost(page_ID)">Not
+                                                                        Interested</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+
+                            <div class="sidebar-under-post relevant-posts">
+                                <div class="">
+                                    <div class="widget">
+                                        <h4 class="widget-title">Relevant Posts</h4>
+                                        <div class="row">
+                                            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+                                                [config]="slideConfig">
+                                                <ng-container *ngFor="let slide of slides">
+                                                    <div ngxSlickItem *ngIf="slide.images.length != 0"
+                                                        class="slide  featured-carousel-post post-43 post type-post status-publish format-standard has-post-thumbnail hentry category-desserts tag-chocolate tag-nuts tag-tea"
+                                                        style="padding: 10px 10px 10px 0px;width: 20%;opacity: 1;display: block;">
+                                                        <!-- <img src="{{ slide.img }}" alt="" width="100%"> -->
+                                                        <div class="featured-carousel-post-i"
+                                                            style="border-radius: 8px;">
+                                                            <a class="carousel-post-media"
+                                                                [routerLink]="['/postdetails',slide.id]"
+                                                                (click)="slickdata(slide.id)"
+                                                                style="padding-bottom: 120%;border-radius: 8px;"
+                                                                *ngIf="slide.images.length != '0'"
+                                                                [ngStyle]="{ 'background-image': 'url(' + slide.images[0].path + ')'}">
+                                                                <div class="fader" style="border-radius: 8px;"></div>
+                                                            </a>
+                                                            <div class="tred_icon">
+                                                                <svg class="multi-img-icon"
+                                                                    *ngIf="slide.images.length > '1' && slide.videos.length == '0'"
+                                                                    xmlns="http://www.w3.org/2000/svg" width="28"
+                                                                    height="28" viewBox="0 0 28 28">
+                                                                    <path fill="none" d="M0 0h28v28H0V0z" />
+                                                                    <path
+                                                                        d="M20 4v12H8V4h12m0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 9.67l1.69 2.26 2.48-3.1L19 15H9zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z" />
+                                                                </svg>
+                                                                <i *ngIf="slide.videos.length != '0'"
+                                                                    class="figure-icon  os-new-icon os-new-icon-video post_media"></i>
+                                                            </div>
+                                                            <div class="post-top-share">
+                                                                <i
+                                                                    class="fa os-icon-plus share-activator-icon share-activator"></i>
+                                                                <span
+                                                                    class="share-activator-label share-activator caption">Share</span>
+                                                                <div class="os_social-head-w">
+                                                                    <div class="os_social"><a
+                                                                            class="os_social_twitter_share"
+                                                                            href="https://twitter.com/share?url={{baseURL}}/share/{{slide.id}}"
+                                                                            target="_blank"><img
+                                                                                src="assets/images/socialicons/twitter.png"
+                                                                                title="Twitter" class="os_social"
+                                                                                alt="Tweet about this on Twitter"></a>
+                                                                        <a class="os_social_google_share"
+                                                                            href="https://plus.google.com/share?url={{baseURL}}/share/{{slide.id}}"
+                                                                            target="_blank"><img
+                                                                                src="assets/images/socialicons/google.png"
+                                                                                title="Google+" class="os_social"
+                                                                                alt="Share on Google+"></a>
+                                                                        <a class="os_social_email_share"
+                                                                            href="mailto:?Subject=Post URL&amp;Body={{baseURL}}/share/{{slide.id}}"><img
+                                                                                src="assets/images/socialicons/email.png"
+                                                                                title="Email" class="os_social"
+                                                                                alt="Email this to someone"></a>
+                                                                        <a class="os_social_facebook_share"
+                                                                            href="http://www.facebook.com/sharer.php?u={{baseURL}}/share/{{slide.id}}"
+                                                                            target="_blank"><img
+                                                                                src="assets/images/socialicons/facebook.png"
+                                                                                title="Facebook" class="os_social"
+                                                                                alt="Share on Facebook"></a>
+                                                                        <a class="os_social_whatsapp_share"
+                                                                            href="https://wa.me/?text={{baseURL}}/share/{{slide.id}}"
+                                                                            target="_blank"><img
+                                                                                src="assets/images/socialicons/whatsapp.png"
+                                                                                title="Whatsapp" class="os_social"
+                                                                                alt="Share on Whatsapp"></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="post-content-body">
+                                                                <a class="post-title entry-title"
+                                                                    [routerLink]="['/postdetails',slide.id]"
+                                                                    (click)="slickdata(slide.id)"
+                                                                    title="{{slide.tags}}">{{slide.title}}..</a>
+                                                                <!-- <ul class="post-categories">
+                        <li><a href="#" rel="category tag">{{trend.sub_title}}</a></li>
+                    </ul> -->
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </ngx-slick-carousel>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-under-post">
+                                <div class="">
+                                    <div class="widget">
+                                        <h4 class="widget-title">Comments</h4>
+                                        <div class="comments-sec">
+                                            <div
+                                                *ngIf="post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'">
+                                                <form action="" method="post" name="commentForm" #commentForm="ngForm"
+                                                    novalidate>
+                                                    <textarea type="text" name="comment"
+                                                        [(ngModel)]="commentInfo.comment" #comment="ngModel"
+                                                        (keydown)="AddComment($event)"
+                                                        placeholder="Write a comment....."></textarea>
+                                                    <!-- <input type="submit" value="Submit" [disabled]="!commentForm.valid"
+                                                        (click)="AddComment(commentInfo)" class="userpro-buttons" /> -->
+                                                </form>
+                                            </div>
+                                            <p style="text-align:center;color:#fff" *ngIf="CommentLength == '0'">
+                                                No Comments Found for this post.</p>
+                                            <p style="text-align:center;color:#fff"
+                                                *ngIf="post_comment_status == 'true' || postcategories_comment_count == '1' || page_comment_status == 'true'">
+                                                Comments are disabled for this post.</p>
+                                            <div class="commentScroll">
+                                                <div class="comment_list"
+                                                    *ngFor="let commentdata of CommentData; let i = index;">
+
+                                                    <p>
+                                                        <img alt="" class="comment-icon"
+                                                            *ngIf="commentdata.user_profile_pic != null"
+                                                            onError="this.src='assets/icon/none.png'"
+                                                            [src]="commentdata.user_profile_pic.fullpathimage">
+                                                        <img alt="" class="comment-icon"
+                                                            *ngIf="commentdata.user_profile_pic == null"
+                                                            src="assets/icon/none.png">
+                                                        <span class="comment-area">
+                                                            <p class="nickname"
+                                                                *ngIf="commentdata.user_details != null">
+                                                                {{commentdata.user_details.nick_name}}</p>
+                                                            <p class="nickname"
+                                                                *ngIf="commentdata.user_details == null">
+                                                                {{commentdata.nick_name}}</p>
+                                                            <p class="comment-tex">{{commentdata.text}} <span
+                                                                    class="com-edit-sec"
+                                                                    *ngIf="post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+                                                                    (click)="replyComment(commentdata.id)">Reply</span>
+                                                            </p>
+
+                                                            <!--<span class="com-edit-sec"
+                                                            *ngIf="commentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                            (click)="editComment(commentdata.id, commentdata.text)">Edit
+                                                            <span>|</span> </span>
+                                                        <span class="com-edit-sec"
+                                                            *ngIf="commentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                            (click)="deleteComment(commentdata.id)">Delete
+                                                            <span>|</span>
+                                                        </span> -->
+
+                                                        </span>
+                                                    </p>
+                                                    <a class="Show_replies"
+                                                        *ngIf="commentdata.commentsreplies.length != 0"
+                                                        (click)="ShowReplies()">View Replies <i
+                                                            class="fa fa-mail-reply"></i></a>
+                                                    <ul class="nav navbar-nav dropdown-ed">
+                                                        <li class="dropdown">
+                                                            <a style="cursor: pointer;"
+                                                                class="dropdown-toggle comment-ed"
+                                                                data-toggle="dropdown">
+                                                                <span class="fa fa-ellipsis-v pull-right"></span></a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a style="cursor: pointer;"
+                                                                        *ngIf="commentdata.user_id == user_id && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+                                                                        (click)="editComment(commentdata.id, commentdata.text)">Edit</a>
+                                                                </li>
+                                                                <li class="divider"></li>
+                                                                <li><a style="cursor: pointer;"
+                                                                        *ngIf="commentdata.user_id == user_id && post_comment_status == 'false'&& postcategories_comment_count == '0' && page_comment_status == 'false'"
+                                                                        (click)="deleteComment(commentdata.id)">Delete</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- Edit -->
+                                                    <div class="edit_comment" id="editcmnt{{commentdata.id}}"
+                                                        style="display:none;">
+                                                        <textarea type="text" name="comment"
+                                                            [(ngModel)]="editInfo.comment" #comment="ngModel"
+                                                            (keydown)="editCommnt($event, commentdata.id, i)"
+                                                            placeholder="Write a comment....."></textarea>
+                                                        <!-- <input type="submit" value="Edit" (click)="editCommnt(editInfo, commentdata.id)"
+                                                        class="edit-buttons" /> -->
+                                                    </div>
+
+                                                    <!-- Reply -->
+                                                    <div class="reply_comment" id="editreply{{commentdata.id}}"
+                                                        style="display:none;">
+                                                        <textarea type="text" name="comment"
+                                                            [(ngModel)]="replyInfo.comment" #comment="ngModel"
+                                                            (keydown)="replyCommnt($event, commentdata.id, i)"
+                                                            placeholder="Write a comment....."></textarea>
+                                                        <!-- <input type="submit" value="Reply"
+                                                        (click)="replyCommnt(replyInfo, commentdata.id)" class="edit-buttons" /> -->
+                                                    </div>
+                                                    <div class="subcomment_list"
+                                                        *ngFor="let subcommentdata of commentdata.commentsreplies; let j = index;">
+                                                        <img alt="" class="comment-icon"
+                                                            *ngIf="subcommentdata.user_profile_pic != null"
+                                                            onError="this.src='assets/icon/none.png'"
+                                                            [src]="subcommentdata.user_profile_pic.fullpathimage">
+                                                        <img alt="" class="comment-icon"
+                                                            *ngIf="subcommentdata.user_profile_pic == null"
+                                                            src="assets/icon/none.png">
+                                                        <div class=""></div>
+                                                        <p class="nickname" *ngIf="subcommentdata.user_details != null">
+                                                            {{subcommentdata.user_details.nick_name}}</p>
+                                                        <p class="nickname" *ngIf="subcommentdata.user_details == null">
+                                                            {{subcommentdata.nick_name}}</p>
+
+                                                        <p class="comment-tex">{{subcommentdata.text}} <span
+                                                                class="com-edit-sec"
+                                                                *ngIf="post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+                                                                (click)="subreplyComment(subcommentdata.id)">Reply</span>
+                                                        </p>
+
+                                                        <!-- <span class="com-edit-sec"
+                                                            *ngIf="subcommentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                            (click)="subeditComment(subcommentdata.id, subcommentdata.text)">Edit
+                                                            <span>|</span></span>
+                                                        <span class="com-edit-sec"
+                                                            *ngIf="subcommentdata.user_id == user_id && postData.post_comment_status == 'false' && postData.postcategories_comment_count == '0' && pageCommentstatus.page_comment_status == 'false'"
+                                                            (click)="subdeleteComment(subcommentdata.id)">Delete
+                                                            <span>|</span></span>-->
+
+
+                                                        <ul class="nav navbar-nav edit-dele-sec">
+                                                            <li class="dropdown">
+                                                                <a style="cursor: pointer;" class="dropdown-toggle"
+                                                                    data-toggle="dropdown"> <span
+                                                                        class="fa fa-ellipsis-h pull-right"></span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a style="cursor: pointer;"
+                                                                            *ngIf="subcommentdata.user_id == user_id && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+                                                                            (click)="subeditComment(subcommentdata.id, subcommentdata.text)">Edit</a>
+                                                                    </li>
+                                                                    <li class="divider"></li>
+                                                                    <li><a style="cursor: pointer;"
+                                                                            *ngIf="subcommentdata.user_id == user_id && post_comment_status == 'false' && postcategories_comment_count == '0' && page_comment_status == 'false'"
+                                                                            (click)="subdeleteComment(subcommentdata.id)">Delete</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- Edit -->
+                                                        <div class="edit_comment" id="subeditcmnt{{subcommentdata.id}}"
+                                                            style="display:none;">
+                                                            <textarea type="text" name="comment"
+                                                                [(ngModel)]="subeditInfo.comment" #comment="ngModel"
+                                                                (keydown)="subeditCommnt($event, subcommentdata.id, subcommentdata.parent_id, i, j)"
+                                                                placeholder="Write a comment....."></textarea>
+                                                            <!-- <input type="submit" value="Edit"
+                                                            (keydown)="subeditCommnt($event, subcommentdata.id, subcommentdata.parent_id)"
+                                                            class="edit-buttons" /> -->
+                                                        </div>
+
+                                                        <!-- Reply -->
+                                                        <div class="reply_comment"
+                                                            id="subeditreply{{subcommentdata.id}}"
+                                                            style="display:none;">
+                                                            <textarea type="text" name="comment"
+                                                                [(ngModel)]="subreplyInfo.comment" #comment="ngModel"
+                                                                (keydown)="subreplyCommnt($event, subcommentdata.id, subcommentdata.parent_id, i)"
+                                                                placeholder="Write a comment....."></textarea>
+                                                            <!-- <input type="submit" value="Reply"
+                                                            (keydown)="subreplyCommnt($event, commentdata.id, subcommentdata.parent_id)"
+                                                            class="edit-buttons" /> -->
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="view-mc"><a class="more_comments "
+                                                        *ngIf="NextPageURL != null" (click)="fetchNextCommnets()">View
+                                                        More
+                                                        Comments</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+                        <rightsidebar></rightsidebar>
+                    </div>
+                </div>
+                <footer></footer>
+                <ngx-spinner bdOpacity=0.9 bdColor="rgba(51,51,51,0.33)" size="medium" color="#fff"
+                    type="line-scale-party" fullScreen="true">
+                    <p style="color: white"> WATNEW </p>
+                </ngx-spinner>
+            </div>
+            <!-- <div class="lightbox-target" id="dog">
+    <img src="{{postData.images[0].path}}" />
+    <a class="lightbox-close" [routerLink]="['/postdetails',postData.id]"></a> 
+    <a href="#_" class='lightbox-close'>
+        &times;
+    </a>
+</div> -->

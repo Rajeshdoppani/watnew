@@ -1,0 +1,61 @@
+<navbar></navbar>
+
+<div class="main-content-w pagesaContent">
+  <div class="main-content-m">
+    <div class="main-content-i">
+
+      <div class="content side-padded-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 wt-left">
+              <header class="search-results-header">
+                <h3>Favourites</h3>
+              </header>
+              <div id="primary-content" data-page-id="407" class="index-isotope hidden-on-load v3  "
+                data-layout-mode="masonry">
+                <ng-masonry-grid [masonryOptions]="{transitionDuration: '0.4s', horizontalOrder: true}"
+                  [useImagesLoaded]="true">
+                  <!-- Masonry Grid Item -->
+                  <ng-masonry-grid-item class="item-isotope" *ngFor="let favdata of favouritedata; let i = index;">
+                    <article id="post-161"
+                      class="manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+                      <div class="post-body">
+                        <div class="post-media-body">
+                          <div class="figure-link-w">
+                            <a class="figure-link" [routerLink]="['/postdetails',favdata.post_id]">
+                              <figure class="abs-image">
+                                <img *ngIf="favdata.postimages.length != 0"
+                                  class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                  onError="this.src='assets/images/noimage.jpg'" [src]="favdata.postimages[0].path">
+                                <span
+                                  *ngIf="favdata.postyvideos.length != 0 && favdata.postimages.length == 0 && favdata.postvideos.length == 0"
+                                  [innerHtml]="favdata.postyvideos[0].path"></span>
+                                <div class="figure-shade"></div>
+                                <i *ngIf="favdata.postimages.length != 0" class="figure-icon  os-new-icon os-new-icon-eye"></i>
+                                <i *ngIf="favdata.postyvideos.length != 0 && favdata.postimages.length == 0 && favdata.postvideos.length == 0" 
+                                class="video-post-icon  os-new-icon os-new-icon-video Video_post"></i>
+                              </figure>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </ng-masonry-grid-item>
+                </ng-masonry-grid>
+              </div>
+              <div class="loadMore" style="display:none;">
+                <button (click)="fetchNextFavourites()" class="load_more">Load More</button>
+              </div>
+              <h2 *ngIf="message" style="color:#fff;text-align: center;font-size: 14px;">{{message}}
+              </h2>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+              <rightsidebar></rightsidebar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer></footer>
+</div>

@@ -1,0 +1,98 @@
+<navbar>
+</navbar>
+<div class="main-content-w">
+    <div class="main-content-m search-results">
+        <div class="main-content-i">
+            
+            <div class="content side-padded-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-9 col-md-9 wt-left">
+                                <header _ngcontent-c6="" class="header-title-sec">
+                                        <h3>Activity Log</h3>
+                                    </header>
+                            <div class="RAS" *ngFor="let post of postsdata; let i = index">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="recentactivitys-sec">
+                                        <div class="recent-cont">
+                                            <article id="post-161"
+                                                class="manlayout pluto-post-box post-161 post type-post status-publish format-standard has-post-thumbnail hentry category-image-text tag-jam tag-orange">
+                                                <div class="post-body">
+                                                    <div class="figure-link-w">
+                                                        <a class="figure-link "
+                                                            [routerLink]="['/postdetails',post.post_id]"
+                                                            *ngIf="post.postimages.length == 0 ? false : true">
+                                                            <figure class="abs-image"
+                                                                [ngStyle]="{ 'padding-bottom': post.postimages[0].paddings}">
+                                                                <img *ngIf="post.postyvideos.length == '0'" width="400"
+                                                                    [src]="post.postimages[0].path"
+                                                                    onError="this.src='assets/images/noimage.jpg'"
+                                                                    class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                                                    alt="">
+                                                            </figure>
+                                                        </a>
+                                                        <a class="figure-link "
+                                                            [routerLink]="['/postdetails',post.post_id]"
+                                                            *ngIf="post.post.preview_url != null">
+                                                            <figure class="abs-image">
+                                                                <img width="400" [src]="post.post.preview_image"
+                                                                    onError="this.src='assets/images/noimage.jpg'"
+                                                                    class="attachment-pluto-index-width size-pluto-index-width wp-post-image"
+                                                                    alt="">
+                                                            </figure>
+                                                        </a>
+                                                        <a class="figure-link "
+                                                            [routerLink]="['/postdetails',post.post_id]"
+                                                            *ngIf="post.postyvideos.length == 0 ? false : true">
+                                                            <figure class="abs-image"
+                                                                *ngIf="post.postyvideos.length != '0'"
+                                                                [innerHtml]="thumbnail">
+                                                            </figure>
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content-body">
+                                                        <h4 class="post-title entry-title"><a
+                                                                [routerLink]="['/postdetails',post.post.id]"
+                                                                *ngIf="post.post == null ? false : true">
+                                                                {{post.post.title}}...</a></h4>
+                                                        <span class="date-sec">{{post.post.created_at}} <span class="time-sec">{{post.updated_at}}</span></span>
+                                                        
+                                                        <div class="post-meta entry-meta">
+                                                            <div class="meta-like">
+                                                                <div class="meta-sec-links">
+                                                                    <a class="heart_icon{{i}} link-icon"
+                                                                        *ngIf="post.type == 'like_type'">
+                                                                        <i class="fa fa-thumbs-o-up"></i>
+                                                                    </a>
+                                                                    <a class="comment-icon"
+                                                                        *ngIf="post.type == 'comment_type'">
+                                                                        <svg style="color:#fff;" class="comment-view"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" viewBox="0 0 24 24">
+                                                                            <path fill="none" d="M0 0h24v24H0V0z" />
+                                                                            <path
+                                                                                d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+                                                                        </svg>
+
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3 wt-rightsidebar">
+                            <rightsidebar></rightsidebar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p style="text-align:center;color:#fff" *ngIf="nodata != ''">{{nodata}}</p>
+</div>
